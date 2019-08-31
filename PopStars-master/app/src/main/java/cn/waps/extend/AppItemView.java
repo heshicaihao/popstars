@@ -1,7 +1,6 @@
 package cn.waps.extend;
 
-import com.develop.PopStars.R;
-import com.develop.constant.ConstantUtil;
+import com.heshicaihao.popstars.R;
 
 import android.app.Activity;
 import android.content.Context;

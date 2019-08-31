@@ -17,7 +17,7 @@ android {
     }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.develop.PopStars"
+        applicationId "com.heshicaihao.popstars"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1

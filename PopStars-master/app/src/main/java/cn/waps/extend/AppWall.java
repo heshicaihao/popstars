@@ -2,10 +2,9 @@ package cn.waps.extend;
 
 import java.util.List;
 
-import com.develop.PopStars.MainActivity;
-import com.develop.PopStars.R;
-import com.develop.PopStars.Util.Utils;
-import com.develop.constant.ConstantUtil;
+import com.heshicaihao.popstars.R;
+import com.heshicaihao.popstars.util.Utils;
+import com.heshicaihao.constant.ConstantUtil;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,12 +17,10 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
