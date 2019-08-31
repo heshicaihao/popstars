@@ -2,17 +2,17 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        releasekey {
-            keyAlias 'releasekey'
-            keyPassword 'yezi82231'
-            storeFile file('G:/Project/PopStars/keystore/releasekey.jks')
-            storePassword 'yezi82231'
+        debug {
+            storeFile file('../release.jks')
+            storePassword "123456"
+            keyAlias "xx"
+            keyPassword "123456"
         }
-        debugkey {
-            keyAlias 'debugkey'
-            keyPassword 'yezi82231'
-            storeFile file('G:/Project/PopStars/keystore/debugkey.jks')
-            storePassword 'yezi82231'
+        release {
+            storeFile file('../release.jks')
+            storePassword "123456"
+            keyAlias "xx"
+            keyPassword "123456"
         }
     }
     compileSdkVersion 28
@@ -24,16 +24,40 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    android.applicationVariants.all { variant ->
+
+        variant.outputs.all {
+            outputFileName = "xingxing_${variant.versionCode}_v${variant.versionName}_${buildType.name}.apk"
+        }
+
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     android {
         aaptOptions.cruncherEnabled = false
         aaptOptions.useNewCruncher = false
     }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
 }
 
 dependencies {
