@@ -96,8 +96,9 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 					mainView.updateBlock();
 				}
 			}else if (msg.what == ConstantUtil.SHOW_DIEDIALOG) {
-				//Toast.makeText(MainActivity.this, "daieee", 1).show();
-				showDieDialog();
+				Toast.makeText(MainActivity.this, "闯关失败再来一局", 1).show();
+//				showDieDialog();
+				toMainView();
 			}else if(msg.what == ConstantUtil.WELCOME_SOUND){
 				sounds.playSound(8, 0);
 			}

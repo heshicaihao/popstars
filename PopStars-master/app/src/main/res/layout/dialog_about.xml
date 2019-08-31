@@ -47,6 +47,7 @@
             android:layout_alignParentBottom="true"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:layout_margin="20dp"
             android:gravity="center" >
 
