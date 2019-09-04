@@ -10,7 +10,6 @@ import com.heshicaihao.popstars.waps.MakeGlod;
 import com.heshicaihao.constant.ConstantUtil;
 import com.heshicaihao.object.TitleButton;
 import com.heshicaihao.popstars.R;
-import com.umeng.analytics.MobclickAgent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -136,7 +135,6 @@ public class StartView extends BaseView {
 				newGameButton.setFlashTime(10);
 				Map<String, String> map_value = new HashMap<String, String>();
 			    map_value.put("start_new_game", "start_new_game");
-				MobclickAgent.onEvent(getContext(), "start_new_game", map_value);
 				mainActivity.getHandler().postDelayed(new Runnable(){
 
 					@Override
@@ -157,7 +155,6 @@ public class StartView extends BaseView {
 				resumeGameButton.setFlashTime(10);
 				HashMap<String,String> map = new HashMap<String,String>();
 				map.put("resumeGame","resumeGame");
-				MobclickAgent.onEvent(getContext(), "resumeGame", map);
 				mainActivity.getHandler().postDelayed(new Runnable(){
 
 					@Override
@@ -182,12 +179,9 @@ public class StartView extends BaseView {
 				Utils.saveKey(getContext(), ConstantUtil.VOICEKEY, voiceClick);
 				HashMap<String,String> map = new HashMap<String,String>();
 				map.put("voiceClice",""+voiceClick);
-				MobclickAgent.onEvent(getContext(), "eventvoiceClice", map); 
-				//mainActivity.showMenuDialog();
 			}else if(advButton != null && advButton.isClick(x, y)){
 				Intent appWallIntent = new Intent(mainActivity, MakeGlod.class);
 				mainActivity.startActivity(appWallIntent);
-				//mainActivity.showMenuDialog();
 			}
 				
 				

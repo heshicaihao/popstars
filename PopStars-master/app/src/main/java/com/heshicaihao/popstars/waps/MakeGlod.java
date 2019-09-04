@@ -4,6 +4,7 @@ import com.heshicaihao.popstars.R;
 import com.heshicaihao.popstars.util.Utils;
 import com.heshicaihao.constant.ConstantUtil;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -49,19 +50,9 @@ public class MakeGlod extends Activity implements View.OnClickListener, UpdatePo
 		// 初始化统计器，并通过代码设置APP_ID, APP_PID
 		AppConnect.getInstance("b1aba42d7c592303d9468722b873677b", "waps", this);
 
-		// RootTools.getInstance().root(this, "该应用中的高级功能需要root权限支持，是否root？");
-
-		// 初始化统计器，需要在AndroidManifest中注册APP_ID和APP_PID值
-		// AppConnect.getInstance(this);.
-		// 以上两种统计器初始化方式任选其一，不要同时使用
-
-		// 禁用错误报告
-		// AppConnect.getInstance(this).setCrashReport(false);
-
 		Button offersButton = (Button) findViewById(R.id.OffersButton);
 		Button gameOffersButton = (Button) findViewById(R.id.gameOffersButton);
 		Button appOffersButton = (Button) findViewById(R.id.appOffersButton);
-		//Button moreAppsButton = (Button) findViewById(R.id.moreAppsButton);
 		Button diyAdButton = (Button) findViewById(R.id.diyAdButton);
 		Button diyAdListButton = (Button) findViewById(R.id.diyAdListButton);
 		Button popAdButton = (Button) findViewById(R.id.popAdButton);
@@ -70,7 +61,6 @@ public class MakeGlod extends Activity implements View.OnClickListener, UpdatePo
 		offersButton.setOnClickListener(this);
 		gameOffersButton.setOnClickListener(this);
 		appOffersButton.setOnClickListener(this);
-		//moreAppsButton.setOnClickListener(this);
 		diyAdButton.setOnClickListener(this);
 		diyAdListButton.setOnClickListener(this);
 		popAdButton.setOnClickListener(this);
@@ -80,60 +70,10 @@ public class MakeGlod extends Activity implements View.OnClickListener, UpdatePo
 		final int glod = Utils.getKey(this, ConstantUtil.GOLDKEY);
 		displayPointsText = this.getString(R.string.currentglod)  + (glod);
 		pointsTextView.setText(displayPointsText);
-		// 预加载自定义广告内容（仅在使用了自定义广告、抽屉广告或迷你广告的情况，才需要添加）
-		AppConnect.getInstance(this).initAdInfo();
 
-		// 预加载插屏广告内容（仅在使用到插屏广告的情况，才需要添加）
-		AppConnect.getInstance(this).initPopAd(this);
 
-		// 设置插屏广告展示时，可使用设备的back键进行关闭
-		// 设置为true表示可通过back键关闭，不调用该句代码则使用默认值false
-		// AppConnect.getInstance(this).setPopAdBack(true);
-
-		// 带有默认参数值的在线配置，使用此方法，程序第一次启动使用的是"defaultValue"，之后再启动则是使用的服务器端返回的参数值
-		String showAd = AppConnect.getInstance(this).getConfig("showAd", "defaultValue");
-
-		//SDKVersionView.setText("在线参数:showAd = " + showAd);
-
-		//SDKVersionView.setText(SDKVersionView.getText() + "\nSDK版本: " + AppConnect.LIBRARY_VERSION_NUMBER);
-
-		// 设置互动广告无数据时的回调监听（该方法必须在showBannerAd之前调用）
-		AppConnect.getInstance(this).setBannerAdNoDataListener(new AppListener() {
-
-			@Override
-			public void onBannerNoData() {
-				Log.i("debug", "banner广告暂无可用数据");
-			}
-
-		});
-		// 互动广告调用方式
-		LinearLayout layout = (LinearLayout) this.findViewById(R.id.AdLinearLayout);
-		AppConnect.getInstance(this).showBannerAd(this, layout);
-
-		// 迷你广告调用方式
-		// AppConnect.getInstance(this).setAdBackColor(Color.argb(50, 120, 240,
-		// 120));//设置迷你广告背景颜色
-		// AppConnect.getInstance(this).setAdForeColor(Color.YELLOW);//设置迷你广告文字颜色
 		LinearLayout miniLayout = (LinearLayout) findViewById(R.id.miniAdLinearLayout);
 		AppConnect.getInstance(this).showMiniAd(this, miniLayout, 10);// 10秒刷新一次
-
-		// 抽屉式应用墙
-		// 1,将drawable-hdpi文件夹中的图片全部拷贝到新工程的drawable-hdpi文件夹中
-		// 2,将layout文件夹中的detail.xml和slidewall.xml两个文件，拷贝到新工程的layout文件夹中
-		// 获取抽屉样式的自定义广告
-		slidingDrawerView = SlideWall.getInstance().getView(this);
-		if (slidingDrawerView != null) {
-			this.addContentView(slidingDrawerView, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-		}
-		AppDetail.getInstanct().addAwardClickListener(this);
-		Thread thread=new Thread(new Runnable()  
-        {  
-            @Override  
-            public void run(){
-            	netIsOk = Utils.ping();
-            }
-         });  
-        thread.start(); 
 	}
 
 	@Override
@@ -172,6 +112,7 @@ public class MakeGlod extends Activity implements View.OnClickListener, UpdatePo
 	}
 	boolean assigend = true;
 	boolean netIsOk = false;
+	@SuppressLint("WrongConstant")
 	public void onClick(View v) {
 		
 		if(!Utils.isNetworkAvailable(MakeGlod.this)){

@@ -8,7 +8,6 @@ import com.heshicaihao.object.GameObject;
 import com.heshicaihao.object.TitleButton;
 import com.heshicaihao.view.MainView;
 import com.heshicaihao.popstars.R;
-import com.umeng.analytics.game.UMGameAgent;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -273,7 +272,6 @@ public class Guanka extends GameObject{
 		needFlash = true;
 		preScore = defen;
 		this.mubiaofen=getmbf(guanka);
-		UMGameAgent.startLevel(""+guanka);
 	}
 	
 	public int getPreScore(){
@@ -414,14 +412,12 @@ public class Guanka extends GameObject{
 	        	shibaishow = true; 
 	        }
 			mMainView.delayUpdateBlockBomb();
-			UMGameAgent.finishLevel(""+guanka);
 		}
 		if(shibaishow && !isDie){
 			isDie = true;
 			Utils.saveKey(mMainView.getContext(), ConstantUtil.BESTSCOREKEY, zuigaofen);
 	        Utils.saveKey(mMainView.getContext(), ConstantUtil.GOLDKEY, glod);
 	        mMainView.delayUpdateBlockBomb();
-	        UMGameAgent.failLevel(""+guanka);
 		}
 				
 		canvas.restore();

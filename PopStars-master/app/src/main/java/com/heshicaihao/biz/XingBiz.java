@@ -22,7 +22,6 @@ import com.heshicaihao.view.FireworkView;
 import com.heshicaihao.view.GoodSocre;
 import com.heshicaihao.view.MainView;
 import com.heshicaihao.view.ScoreMoveField;
-import com.umeng.analytics.MobclickAgent;
 
 public class XingBiz {
 	private Resources resources;
@@ -37,7 +36,6 @@ public class XingBiz {
 	private List<Xing> preSelectlist = new ArrayList<Xing>();
 	private List<Xing> suplesStarslist = new ArrayList<Xing>();
 	private Xing[][] stars= new Xing[ConstantUtil.MAXROW][ConstantUtil.MAXCLOUM];
-	//private List<moveScoreText> moveScoreTexts = new ArrayList<moveScoreText>();
 	private Guanka guanka;
 	private boolean shengliorshibai;
 	private boolean chuangguanwancheng = false;
@@ -350,7 +348,6 @@ public class XingBiz {
 				}
 				HashMap<String,String> map = new HashMap<String,String>();
 				map.put("exitAndSave","exitAndSave");
-				MobclickAgent.onEvent(mMainView.getContext(), "exitAndSave", map);    
 
 				Utils.clearShare(context);
 				Utils.saveKey(context, ConstantUtil.BESTSCOREKEY, bestScore);

@@ -16,8 +16,8 @@ import com.heshicaihao.view.CustomDialog;
 import com.heshicaihao.view.FireworkView;
 import com.heshicaihao.view.MainView;
 import com.heshicaihao.view.StartView;
-import com.umeng.analytics.MobclickAgent;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -48,6 +48,7 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 	private int preScore;
 	boolean isResume = false;
 	private Handler handler = new Handler() {
+		@SuppressLint({"WrongConstant"})
 		@Override
 		public void handleMessage(Message msg) {
 			if (msg.what == ConstantUtil.TO_MAIN_VIEW) {
@@ -56,7 +57,7 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 				startview();
 			} else if (msg.what == ConstantUtil.RESUME_GAME) {
 				toMainView();
-				Toast.makeText(MainActivity.this, "rsume", 1).show();
+				Toast.makeText(MainActivity.this, "rsume", Toast.LENGTH_SHORT).show();
 			} else if (msg.what == ConstantUtil.END_GAME) {
 				endGame();
 			}else if (msg.what == ConstantUtil.BLOCK_BOMB_GAME) {
@@ -80,7 +81,7 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 					mainView.updateBlock();
 				}
 			}else if (msg.what == ConstantUtil.SHOW_DIEDIALOG) {
-				Toast.makeText(MainActivity.this, "闯关失败再来一局", 1).show();
+				Toast.makeText(MainActivity.this, "闯关失败再来一局", Toast.LENGTH_SHORT).show();
 //				showDieDialog();
 				toMainView();
 			}else if(msg.what == ConstantUtil.WELCOME_SOUND){
@@ -95,6 +96,7 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 	boolean isClick =false;
 	boolean pause = false;
 
+	@SuppressLint("WrongConstant")
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
@@ -102,8 +104,8 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 			long endTime = System.currentTimeMillis();
 			if(!isClick){
 				isClick = true;
-				startTime = System.currentTimeMillis();	
-				Toast.makeText(this,this.getString(R.string.on_back_exit),0).show();
+				startTime = System.currentTimeMillis();
+				Toast.makeText(this,this.getString(R.string.on_back_exit),Toast.LENGTH_SHORT).show();
 			}else{
 				Log.d("zxc11","onBackPressed isClick = "+isClick);
 				isClick = false;
@@ -112,7 +114,7 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 				}else{
 					isClick = true;
 					startTime = System.currentTimeMillis();	
-					Toast.makeText(this,this.getString(R.string.on_back_exit),0).show();
+					Toast.makeText(this,this.getString(R.string.on_back_exit),Toast.LENGTH_SHORT).show();
 				}
 			}
 			
@@ -124,10 +126,8 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 			}else{
 				showAlertDialog();
 			}
-			//Toast.makeText(this,"游戏界面",0).show();
-			
+
 		}
-		//super.onBackPressed();
 		return;
 	}
 	
@@ -152,14 +152,11 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 						
 						startview();
 						dialog.dismiss();
-						//UMGameAgent.onProfileSignOff();
-						//mainView.exitMenu();
 					}
 				});
 		dialog = builder.create();
 		Window window = dialog.getWindow();
         window.setGravity(Gravity.CENTER);
-       // window.setWindowAnimations(R.style.dialog_animation);
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -185,7 +182,6 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 					Message msg = new Message();
 					msg.what = ConstantUtil.TO_MAIN_VIEW;
 					Utils.saveKey(MainActivity.this, ConstantUtil.GOLDKEY, (glod-ConstantUtil.RECOVERLIVE));
-					//MainActivity.this.getHandler().sendMessageDelayed(msg, 10);
 					toMainView();
 					dialog.dismiss();
 					//UMGameAgent.use("glod_recover_live", 1 , 100);
@@ -209,14 +205,11 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 			public void onClick(DialogInterface dialog, int which) {
 				Intent appWallIntent = new Intent(MainActivity.this, MakeGlod.class);
 				MainActivity.this.startActivity(appWallIntent);
-				//AdInfo adInfo = AppConnect.getInstance(MainActivity.this).getAdInfo();
-				//AppDetail.getInstanct().showAdDetail(MainActivity.this, adInfo);
 			}
 		});
 		dialog = builder.create(R.layout.die_dialog_normal_layout);
 		Window window = dialog.getWindow();
         window.setGravity(Gravity.CENTER);
-        //window.setWindowAnimations(R.style.dialog_animation);
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -232,7 +225,6 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 		
         builder.setFeedBack(new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				//Toast.makeText(MainActivity.this, "setFeedBack", 0).show();
 				Log.d("zxc224", "setFeedBack");
 				AppConnect.getInstance(MainActivity.this).showFeedback(MainActivity.this);
 			}
@@ -240,7 +232,6 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
         
         builder.setcheckEdition(new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				//Toast.makeText(MainActivity.this, "setcheckEdition", 0).show();
 				Log.d("zxc224", "setcheckEdition");
 				AppConnect.getInstance(MainActivity.this).checkUpdate(MainActivity.this);
 			}
@@ -286,7 +277,6 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 				builderMenu.setDoubleDrable(singleClick == 0?R.drawable.double_click1:R.drawable.double_click2);
 				HashMap<String,String> map = new HashMap<String,String>();
 				map.put("doubleClice",""+singleClick);
-				MobclickAgent.onEvent(MainActivity.this, "eventDoubleClice", map);    
 				if(singleClick ==0){
 					if(mainView != null){
 						mainView.clearDoubleClickLabel();
@@ -303,7 +293,6 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 				builderMenu.setVoiceDrable(voiceClick == 0?R.drawable.close_voice:R.drawable.open_voice);
 				HashMap<String,String> map = new HashMap<String,String>();
 				map.put("voiceClice",""+voiceClick);
-				MobclickAgent.onEvent(MainActivity.this, "eventvoiceClice", map); 
 			}
 		},voiceClick == 0?R.drawable.close_voice:R.drawable.open_voice);
 		
@@ -317,11 +306,9 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 	protected void onCreate(Bundle savedInstanceState) {
 		// 分数计算公式
 		super.onCreate(savedInstanceState);
-		MobclickAgent.onProfileSignIn("example_id");
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		// setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏
 		sounds = new GameSoundPool(this);
 		sounds.initGameSound();
 		PermissionsUtil.requestPermission(this);
@@ -336,21 +323,6 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 		msg.what = ConstantUtil.WELCOME_SOUND;
 		handler.sendMessageDelayed(msg, 1000);
 		
-		//AppConnect.getInstance("b1aba42d7c592303d9468722b873677b", "waps", this);
-
-		//UMGameAgent.setDebugMode(true);
-        //UMGameAgent.init(this);
-        
-        //AppDetail.getInstanct().addAwardClickListener(this);
-        // 预加载自定义广告内容（仅在使用了自定义广告、抽屉广告或迷你广告的情况，才需要添加）
-     	//AppConnect.getInstance(this).initAdInfo();
-     	
-     	// 预加载插屏广告内容（仅在使用到插屏广告的情况，才需要添加）
-     	//AppConnect.getInstance(this).initPopAd(this);
-     	
-        // 带有默认参数值的在线配置，使用此方法，程序第一次启动使用的是"defaultValue"，之后再启动则是使用的服务器端返回的参数值
-      //  String showAd = AppConnect.getInstance(this).getConfig("showAd", "defaultValue");
-     //   Log.i("debug", "showAd = "+showAd);
     }
 	
 	FireworkView fireworkView;
@@ -448,37 +420,6 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 		}
 		firstInit = false;
 		
-		/*AppConnect.getInstance(this).setPopAdNoDataListener(new AppListener() {
-
-			@Override
-			public void onPopNoData() {
-				Log.i("debug", "no adv to user");
-			}
-
-		});
-		// 显示插屏广告
-		AppConnect.getInstance(this).showPopAd(this);*/
-		
-		/*AdInfo adInfo = AppConnect.getInstance(this).getAdInfo();
-		//AppDetail.getInstanct().showAdDetail(this, adInfo);
-		
-		SplashView mSplashView = new SplashView(this);
-		// call after setContentView(R.layout.activity_sample);
-		mSplashView.showSplashView(this, 6, R.drawable.default_img, new SplashView.OnSplashViewActionListener() {
-            @Override
-            public void onSplashImageClick(String actionUrl) {
-                Log.d("SplashView", "img clicked. actionUrl: " + actionUrl);
-                Toast.makeText(MainActivity.this, "img clicked.", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onSplashViewDismiss(boolean initiativeDismiss) {
-                Log.d("SplashView", "dismissed, initiativeDismiss: " + initiativeDismiss);
-            }
-        },adInfo);*/
-
-        // call this method anywhere to update splash view data
-        //SplashView.updateSplashData(this, "http://ww2.sinaimg.cn/large/72f96cbagw1f5mxjtl6htj20g00sg0vn.jpg", "http://jkyeo.com");
 
 	}
 
@@ -486,8 +427,7 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		//UMGameAgent.onPause(this);
-		
+
 	}
 
 	@Override
@@ -500,7 +440,6 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 			startView.release();
 		}
 		AppConnect.getInstance(this).close();
-		MobclickAgent.onKillProcess(this);
 		super.onDestroy();
 	}
 
