@@ -31,7 +31,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 
 public class MainActivity extends Activity implements AppDetail.onAwardClickListener, UpdatePointsListener{
 
@@ -166,58 +165,7 @@ public class MainActivity extends Activity implements AppDetail.onAwardClickList
 
 	CustomDialog dialog;
 	CustomDialog.Builder builder = null;
-	public void showDieDialog() {
-		final int glod = Utils.getKey(this, ConstantUtil.GOLDKEY);
-		if(builder == null)
-			builder = new CustomDialog.Builder(this);
-		builder.setGlod(glod);
-		builder.setMessage(this.getResources().getString(glod < ConstantUtil.RECOVERLIVE?R.string.glod_no_hint:R.string.glod_hint));
-		builder.setTitle(this.getResources().getString(R.string.die));
-		builder.setPositiveButton(this.getResources().getString(R.string.recover_life), new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				if(glod > ConstantUtil.RECOVERLIVE){
-					isResumeLive = true;
-					currentGuanKa = mainView.getGuanKa();
-					preScore = mainView.getPreScore();
-					Message msg = new Message();
-					msg.what = ConstantUtil.TO_MAIN_VIEW;
-					Utils.saveKey(MainActivity.this, ConstantUtil.GOLDKEY, (glod-ConstantUtil.RECOVERLIVE));
-					toMainView();
-					dialog.dismiss();
-					//UMGameAgent.use("glod_recover_live", 1 , 100);
-				}else{
-					builder.setMessage(MainActivity.this.getResources().getString(R.string.glod_no_hint));
-				}
-				
-				//设置你的操作事项
-			}
-		});
 
-		builder.setNegativeButton(this.getResources().getString(R.string.onece_again),
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-						toMainView();
-					}
-				});
-		
-		builder.setMakeScoreButton(new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				Intent appWallIntent = new Intent(MainActivity.this, MakeGlod.class);
-				MainActivity.this.startActivity(appWallIntent);
-			}
-		});
-		dialog = builder.create(R.layout.die_dialog_normal_layout);
-		Window window = dialog.getWindow();
-        window.setGravity(Gravity.CENTER);
-        WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        window.setAttributes(lp);
-		dialog.show();
-		
-	}
-	
 	public void showIntrduceDialog() {
 		if(builder == null)
 			builder = new CustomDialog.Builder(this);

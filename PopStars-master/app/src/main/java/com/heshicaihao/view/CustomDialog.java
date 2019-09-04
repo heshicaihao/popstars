@@ -80,7 +80,6 @@ public class CustomDialog extends Dialog {
 		/**
 		 * Set the Dialog message from resource
 		 * 
-		 * @param title
 		 * @return
 		 */
 		public Builder setMessage(int message) {
@@ -327,20 +326,12 @@ public class CustomDialog extends Dialog {
 			}
 			
 			if (makeScoreButtonClickListener != null) {
-				((ImageView) layout.findViewById(R.id.make_score))
-						.setOnClickListener(new View.OnClickListener() {
-							public void onClick(View v) {
-								makeScoreButtonClickListener.onClick(dialog,
-										DialogInterface.BUTTON_NEGATIVE);
-							}
-						});
 			}
 			
 			// set the content message
 			if (message != null) {
 				((TextView) layout.findViewById(R.id.message)).setText(message);
 			messageTextView =(TextView) layout.findViewById(R.id.message);
-			glodTextView = (TextView)layout.findViewById(R.id.glodnumber);
 			if(glodTextView != null)
 				glodTextView.setText(""+glod);
 			} else if (contentView != null) {
@@ -357,7 +348,6 @@ public class CustomDialog extends Dialog {
 			if(glod < ConstantUtil.RECOVERLIVE && button != null){
 				button.setEnabled(false);
 				button.setBackgroundResource(R.drawable.btn_not_selector);
-				button.setTextColor(context.getColor(R.color.text_gray_color));
 			}
 			dialog.setContentView(layout);
 			dialog.setCanceledOnTouchOutside(false); 
