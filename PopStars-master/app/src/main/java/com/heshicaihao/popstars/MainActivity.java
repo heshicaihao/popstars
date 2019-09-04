@@ -27,10 +27,8 @@ import com.heshicaihao.popstars.view.StartView;
 
 import java.util.HashMap;
 
-import cn.waps.AppConnect;
-import cn.waps.UpdatePointsListener;
 
-public class MainActivity extends Activity implements  UpdatePointsListener {
+public class MainActivity extends Activity {
 
     int n;
     int score;
@@ -172,14 +170,12 @@ public class MainActivity extends Activity implements  UpdatePointsListener {
         builder.setFeedBack(new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 Log.d("zxc224", "setFeedBack");
-                AppConnect.getInstance(MainActivity.this).showFeedback(MainActivity.this);
             }
         });
 
         builder.setcheckEdition(new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 Log.d("zxc224", "setcheckEdition");
-                AppConnect.getInstance(MainActivity.this).checkUpdate(MainActivity.this);
             }
         });
         dialog = builder.create(R.layout.dialog_about, 1);
@@ -351,7 +347,6 @@ public class MainActivity extends Activity implements  UpdatePointsListener {
                 ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.ALIGN_TOP);
         this.addContentView(adlayout, layoutParams);
-        AppConnect.getInstance(this).showMiniAd(this, adlayout, 10);// 10秒刷新一次
     }
 
     @Override
@@ -390,7 +385,6 @@ public class MainActivity extends Activity implements  UpdatePointsListener {
         if (startView != null) {
             startView.release();
         }
-        AppConnect.getInstance(this).close();
         super.onDestroy();
     }
 
