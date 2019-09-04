@@ -42,38 +42,6 @@
         </LinearLayout>
     </LinearLayout>
     
-     <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            android:layout_margin="20dp"
-            android:gravity="center" >
 
-            <TextView
-                android:id="@+id/feedbackButton"
-                style="@style/text_18"
-                
-                android:layout_width="0dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-            	android:gravity="center"
-            	android:background="@drawable/btn_cancel_selector"
-                android:layout_height="30dp"
-                android:lineSpacingMultiplier="1.5"
-                android:text="@string/client_feedback" />
-            <TextView
-                android:id="@+id/checkout_new_edition"
-                style="@style/text_18"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-            	android:gravity="center"
-                android:layout_height="30dp"
-                android:background="@drawable/btn_cancel_selector"
-                android:lineSpacingMultiplier="1.5"
-                android:text="@string/checkout_new_edition" />
-        </LinearLayout>
 
 </RelativeLayout>

@@ -246,29 +246,6 @@ public class CustomDialog extends Dialog {
 			RelativeLayout mRelativeLayout = (RelativeLayout)layout.findViewById(R.id.background);
 			if(mRelativeLayout != null)
 				mRelativeLayout.getBackground().setAlpha(200);
-			
-			
-			if (feedBackClickListener != null) {
-				((TextView) layout.findViewById(R.id.feedbackButton))
-						.setOnClickListener(new View.OnClickListener() {
-							public void onClick(View v) {
-								Log.d("zxc224", "setFeedBackbbbb");
-								feedBackClickListener.onClick(dialog,
-										DialogInterface.BUTTON_POSITIVE);
-							}
-						});
-			}
-			
-			if (checkEditionClickListener != null) {
-				((TextView) layout.findViewById(R.id.checkout_new_edition))
-						.setOnClickListener(new View.OnClickListener() {
-							public void onClick(View v) {
-								Log.d("zxc224", "setcheckEditionbbbb");
-								checkEditionClickListener.onClick(dialog,
-										DialogInterface.BUTTON_POSITIVE);
-							}
-						});
-			}
 			dialog.addContentView(layout, new LayoutParams(
 					LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 			dialog.setContentView(layout);
