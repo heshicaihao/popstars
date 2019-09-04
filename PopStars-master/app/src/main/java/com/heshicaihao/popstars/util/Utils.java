@@ -40,7 +40,7 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import com.heshicaihao.object.Xing;
+import com.heshicaihao.popstars.object.Xing;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -56,9 +56,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.NetworkInfo.State;
 import android.preference.PreferenceManager;
 import android.util.Base64;
 import android.util.Log;
@@ -118,36 +115,7 @@ public class Utils {
        } 
        return false;
 	}
-   
-   public static boolean isNetworkAvailable(Context context){
-       // 获取手机所有连接管理对象（包括对wi-fi,net等连接的管理）
-       ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-       
-       if (connectivityManager == null)
-       {
-           return false;
-       }
-       else
-       {
-           // 获取NetworkInfo对象
-           NetworkInfo[] networkInfo = connectivityManager.getAllNetworkInfo();
-           
-           if (networkInfo != null && networkInfo.length > 0)
-           {
-               for (int i = 0; i < networkInfo.length; i++)
-               {
-                   System.out.println(i + "===状态===" + networkInfo[i].getState());
-                   System.out.println(i + "===类型===" + networkInfo[i].getTypeName());
-                   // 判断当前网络状态是否为连接状态
-                   if (networkInfo[i].getState() == State.CONNECTED)
-                   {
-                       return true;
-                   }
-               }
-           }
-       }
-       return false;
-   }
+
 	/**
 	 * 
 	 * @param dp
@@ -338,7 +306,7 @@ public class Utils {
 	/**
 	 * 画出指定形状的图片
 	 * 
-	 * @param cpBitmap
+	 * @param bmp
 	 * @param radius
 	 * @return
 	 */
