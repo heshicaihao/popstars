@@ -1,11 +1,11 @@
-package com.heshicaihao.popstars.view;
+package com.heshicaihao.popstars.widget;
 
 import java.util.LinkedList;
 
-import com.heshicaihao.popstars.gamesoundpool.GameSoundPool;
+import com.heshicaihao.popstars.constant.MyConstant;
+import com.heshicaihao.popstars.util.GameSoundPool;
 import com.heshicaihao.popstars.util.Utils;
-import com.heshicaihao.popstars.biz.XingBiz;
-import com.heshicaihao.popstars.constant.ConstantUtil;
+import com.heshicaihao.popstars.ui.XingBiz;
 import com.heshicaihao.popstars.ui.Guanka;
 import com.heshicaihao.popstars.MainActivity;
 import com.heshicaihao.popstars.R;
@@ -129,7 +129,7 @@ public class MainView extends BaseView {
 	}
 
 	public void exitMenu() {
-		mainActivity.getHandler().sendEmptyMessage(ConstantUtil.START_GAME);
+		mainActivity.getHandler().sendEmptyMessage(MyConstant.START_GAME);
 	}
 
 	public boolean getAllBlockInitFinash() {
@@ -137,7 +137,7 @@ public class MainView extends BaseView {
 	}
 
 	public void newGame() {
-		Game_State = ConstantUtil.GAME_START;
+		Game_State = MyConstant.GAME_START;
 	}
 
 	public void setResume(boolean isResume) {
@@ -168,7 +168,7 @@ public class MainView extends BaseView {
 		super.surfaceCreated(arg0);
 		if (!isInit) {
 			isInit = true;
-			Game_State = ConstantUtil.GAME_START;
+			Game_State = MyConstant.GAME_START;
 			xingbiz.setScreenWH(screen_width, screen_height);
 			guanka.setScreenWH(screen_width, screen_height);
 
@@ -176,7 +176,7 @@ public class MainView extends BaseView {
 			xingbiz.setGuanka(guanka);
 			initBitmap();
 		} else {
-			Game_State = ConstantUtil.GAME_ING;
+			Game_State = MyConstant.GAME_ING;
 		}
 		if (thread.isAlive()) {
 			thread.start();
@@ -272,7 +272,7 @@ public class MainView extends BaseView {
 
 	public void Logic() {
 		switch (Game_State) {
-		case ConstantUtil.GAME_START: {
+		case MyConstant.GAME_START: {
 			updateBomb = false;
 			xingbiz.init();
 			if (isResume) {
@@ -286,24 +286,24 @@ public class MainView extends BaseView {
 					guanka.setCurrentScore(preScore);
 				}
 			}
-			Game_State = ConstantUtil.GAME_ING;
+			Game_State = MyConstant.GAME_ING;
 			break;
 		}
-		case ConstantUtil.GAME_NEXT: {
+		case MyConstant.GAME_NEXT: {
 			updateBomb = false;
 			xingbiz.init();
-			Game_State = ConstantUtil.GAME_ING;
+			Game_State = MyConstant.GAME_ING;
 			break;
 		}
-		case ConstantUtil.GAME_ING: {
+		case MyConstant.GAME_ING: {
 			xingbiz.initObject1();
 			xingbiz.Logic();
 			if (xingbiz.isChuangguanwancheng()) {
-				Game_State = ConstantUtil.GAME_END;
+				Game_State = MyConstant.GAME_END;
 			}
 			break;
 		}
-		case ConstantUtil.GAME_END: {
+		case MyConstant.GAME_END: {
 			if (xingbiz.isShengliorshibai()) {
 				if (guanka.getDefen() > guanka.getZuigaofen()) {
 					guanka.setZuigaofen(guanka.getDefen());
@@ -315,14 +315,14 @@ public class MainView extends BaseView {
 					editor.commit();
 				}
 				sounds.playSound(2, 0);
-				Game_State = ConstantUtil.GAME_WAIT;
+				Game_State = MyConstant.GAME_WAIT;
 			} else {
 				sounds.playSound(3, 0);
-				Game_State = ConstantUtil.GAME_WAIT;
+				Game_State = MyConstant.GAME_WAIT;
 			}
 			break;
 		}
-		case ConstantUtil.GAME_WAIT: {
+		case MyConstant.GAME_WAIT: {
 			if (xingbiz.isChuangguanwancheng()) {
 				if (xingbiz.isShengliorshibai()) {
 
@@ -351,7 +351,7 @@ public class MainView extends BaseView {
 		if(!updateBomb){
 			xingbiz.setFlash();
 			Message msg = new Message();
-			msg.what = ConstantUtil.BLOCK_BOMB_GAME;
+			msg.what = MyConstant.BLOCK_BOMB_GAME;
 			isBomb = true;
 			((MainActivity) context).getHandler().sendMessageDelayed(msg,2000);
 		}
@@ -362,7 +362,7 @@ public class MainView extends BaseView {
 	public void updateBlockBomb() {
 		if (isPause || ((MainActivity) context).getDialogIsShow()) {
 			Message msg = new Message();
-			msg.what = ConstantUtil.BLOCK_BOMB_GAME;
+			msg.what = MyConstant.BLOCK_BOMB_GAME;
 			((MainActivity) context).getHandler().sendMessageDelayed(msg,1000);
 			return;
 		}
@@ -375,14 +375,14 @@ public class MainView extends BaseView {
 			}
 	        xingbiz.getNextBondStar();
 			Message msg = new Message();
-			msg.what = ConstantUtil.BLOCK_BOMB_GAME;
+			msg.what = MyConstant.BLOCK_BOMB_GAME;
 			
 			((MainActivity) context).getHandler().sendMessageDelayed(msg,200);
 		} else if (xingbiz.isChuangguanwancheng() && !xingbiz.hasLive()
 				&& guanka.isSucess()) {
 			dialog_die_show = false;
 			Message msg = new Message();
-			msg.what = ConstantUtil.UPDATE_NEXT;
+			msg.what = MyConstant.UPDATE_NEXT;
 			guanka.setShowGuanka(true);
 			guanka.setCurrentScore(guanka.getDefen());
 			((MainActivity) context).getHandler().sendMessageDelayed(msg,2000);
@@ -390,7 +390,7 @@ public class MainView extends BaseView {
 				&& !((MainActivity) context).dieDialogIsShow() && !dialog_die_show) {
 			Message msg = new Message();
 			dialog_die_show = true;
-			msg.what = ConstantUtil.SHOW_DIEDIALOG;
+			msg.what = MyConstant.SHOW_DIEDIALOG;
 			guanka.setCurrentScore(guanka.getDefen());
 			((MainActivity) context).getHandler().sendMessageDelayed(msg,2000);
 			//((MainActivity) context).showDieDialog();
@@ -403,7 +403,7 @@ public class MainView extends BaseView {
 	}
 
 	public void updateNext() {
-		Game_State = ConstantUtil.GAME_NEXT;
+		Game_State = MyConstant.GAME_NEXT;
 	}
 
 	public void updateBlock() {
@@ -411,7 +411,7 @@ public class MainView extends BaseView {
 			xingbiz.bombFireworks();
 		}
 		Message msg = new Message();
-		msg.what = ConstantUtil.UPDATE_BOMB;
+		msg.what = MyConstant.UPDATE_BOMB;
 		((MainActivity) context).getHandler().sendMessageDelayed(msg, 300);
 	}
 
@@ -430,11 +430,11 @@ public class MainView extends BaseView {
 			float y = event.getY();
 			guanka.onDown(x, y);
 			switch (Game_State) {
-			case ConstantUtil.GAME_ING: {
+			case MyConstant.GAME_ING: {
 				xingbiz.onDown(x, y);
 				break;
 			}
-			case ConstantUtil.GAME_WAIT: {
+			case MyConstant.GAME_WAIT: {
 				break;
 			}
 			}

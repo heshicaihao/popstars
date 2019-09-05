@@ -1,12 +1,12 @@
 package com.heshicaihao.popstars.ui;
 
-import com.heshicaihao.popstars.gamesoundpool.GameSoundPool;
+import com.heshicaihao.popstars.constant.MyConstant;
+import com.heshicaihao.popstars.util.GameSoundPool;
 import com.heshicaihao.popstars.util.Utils;
-import com.heshicaihao.popstars.constant.ConstantUtil;
 import com.heshicaihao.popstars.object.Button;
 import com.heshicaihao.popstars.object.GameObject;
 import com.heshicaihao.popstars.object.TitleButton;
-import com.heshicaihao.popstars.view.MainView;
+import com.heshicaihao.popstars.widget.MainView;
 import com.heshicaihao.popstars.R;
 
 import android.content.res.Resources;
@@ -237,7 +237,7 @@ public class Guanka extends GameObject{
 		mubiaofen=1000;
 		defen=0;
 		currentScore = defen;
-		glod = Utils.getKey(mMainView.getContext(), ConstantUtil.GOLDKEY);
+		glod = Utils.getKey(mMainView.getContext(), MyConstant.GOLDKEY);
 		needFlash = true;
 	}
 
@@ -415,8 +415,8 @@ public class Guanka extends GameObject{
 		}
 		if(shibaishow && !isDie){
 			isDie = true;
-			Utils.saveKey(mMainView.getContext(), ConstantUtil.BESTSCOREKEY, zuigaofen);
-	        Utils.saveKey(mMainView.getContext(), ConstantUtil.GOLDKEY, glod);
+			Utils.saveKey(mMainView.getContext(), MyConstant.BESTSCOREKEY, zuigaofen);
+	        Utils.saveKey(mMainView.getContext(), MyConstant.GOLDKEY, glod);
 	        mMainView.delayUpdateBlockBomb();
 		}
 				

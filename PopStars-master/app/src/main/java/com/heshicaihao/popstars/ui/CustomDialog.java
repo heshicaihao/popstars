@@ -1,12 +1,11 @@
-package com.heshicaihao.popstars.view;
+package com.heshicaihao.popstars.ui;
 
 import com.heshicaihao.popstars.R;
-import com.heshicaihao.popstars.constant.ConstantUtil;
+import com.heshicaihao.popstars.constant.MyConstant;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -321,7 +320,7 @@ public class CustomDialog extends Dialog {
 								LayoutParams.FILL_PARENT));
 			}
 			Button button = ((Button) layout.findViewById(R.id.positiveButton));
-			if(glod < ConstantUtil.RECOVERLIVE && button != null){
+			if(glod < MyConstant.RECOVERLIVE && button != null){
 				button.setEnabled(false);
 				button.setBackgroundResource(R.drawable.btn_not_selector);
 			}

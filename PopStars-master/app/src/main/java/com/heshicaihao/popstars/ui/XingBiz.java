@@ -1,4 +1,4 @@
-package com.heshicaihao.popstars.biz;
+package com.heshicaihao.popstars.ui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,17 +11,16 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.Log;
 
-import com.heshicaihao.popstars.gamesoundpool.GameSoundPool;
+import com.heshicaihao.popstars.constant.MyConstant;
+import com.heshicaihao.popstars.util.GameSoundPool;
 import com.heshicaihao.popstars.util.StarObject;
 import com.heshicaihao.popstars.util.Utils;
-import com.heshicaihao.popstars.constant.ConstantUtil;
 import com.heshicaihao.popstars.object.GameObject;
 import com.heshicaihao.popstars.object.Xing;
-import com.heshicaihao.popstars.ui.Guanka;
-import com.heshicaihao.popstars.view.FireworkView;
-import com.heshicaihao.popstars.view.GoodSocre;
-import com.heshicaihao.popstars.view.MainView;
-import com.heshicaihao.popstars.view.ScoreMoveField;
+import com.heshicaihao.popstars.widget.FireworkView;
+import com.heshicaihao.popstars.widget.GoodSocre;
+import com.heshicaihao.popstars.widget.MainView;
+import com.heshicaihao.popstars.widget.ScoreMoveField;
 
 public class XingBiz {
 	private Resources resources;
@@ -35,7 +34,7 @@ public class XingBiz {
 	private List<Xing> currentSelectlist = new ArrayList<Xing>();
 	private List<Xing> preSelectlist = new ArrayList<Xing>();
 	private List<Xing> suplesStarslist = new ArrayList<Xing>();
-	private Xing[][] stars= new Xing[ConstantUtil.MAXROW][ConstantUtil.MAXCLOUM];
+	private Xing[][] stars= new Xing[MyConstant.MAXROW][MyConstant.MAXCLOUM];
 	private Guanka guanka;
 	private boolean shengliorshibai;
 	private boolean chuangguanwancheng = false;
@@ -105,8 +104,8 @@ public class XingBiz {
 		this.Mainxinglist.clear();
 		preSelectlist.clear();
 		preSelectlist.clear();
-		for(int r = 0;r<ConstantUtil.MAXROW;r++){
-			for(int j = 0;j<ConstantUtil.MAXCLOUM;j++){
+		for(int r = 0; r< MyConstant.MAXROW; r++){
+			for(int j = 0; j< MyConstant.MAXCLOUM; j++){
 				stars[r][j] = null;
 			}
 		}
@@ -318,16 +317,16 @@ public class XingBiz {
 		this.chuangguanwancheng = false;
 		isResetSpeed = false;
 		this.iscaozuo = false;
-		guanka.setZuigaofen(Utils.getKey(context, ConstantUtil.BESTSCOREKEY));
-		guanka.setGuanka(Utils.getKey(context, ConstantUtil.GUANKAEKEY));
+		guanka.setZuigaofen(Utils.getKey(context, MyConstant.BESTSCOREKEY));
+		guanka.setGuanka(Utils.getKey(context, MyConstant.GUANKAEKEY));
 		guanka.setMubiaofen(guanka.getmbf(guanka.getGuanka()));
-		guanka.setDefen(Utils.getKey(context, ConstantUtil.CURRENTSCOREKEY));
-		guanka.setGold(Utils.getKey(context, ConstantUtil.GOLDKEY));
+		guanka.setDefen(Utils.getKey(context, MyConstant.CURRENTSCOREKEY));
+		guanka.setGold(Utils.getKey(context, MyConstant.GOLDKEY));
 		guanka.setCurrentScore(guanka.getDefen());
 		int n = 0;
-		for(int i=0;i<ConstantUtil.MAXROW;i++){
-			for(int j =0;j<ConstantUtil.MAXCLOUM;j++){
-				Xing star = Utils.getObjectFromShare(context, ConstantUtil.STARKEY+(n++) 
+		for(int i = 0; i< MyConstant.MAXROW; i++){
+			for(int j = 0; j< MyConstant.MAXCLOUM; j++){
+				Xing star = Utils.getObjectFromShare(context, MyConstant.STARKEY+(n++)
 						, screen_width, screen_height, xwidth, xheight, id++);
 				if(star != null){
 					Mainxinglist.add(star);
@@ -350,17 +349,17 @@ public class XingBiz {
 				map.put("exitAndSave","exitAndSave");
 
 				Utils.clearShare(context);
-				Utils.saveKey(context, ConstantUtil.BESTSCOREKEY, bestScore);
-				Utils.saveKey(context, ConstantUtil.GUANKAEKEY, guanka.getGuanka());
-				Utils.saveKey(context, ConstantUtil.CURRENTSCOREKEY, guanka.getDefen());
-				Utils.saveKey(context, ConstantUtil.GOLDKEY, guanka.getGlod());
+				Utils.saveKey(context, MyConstant.BESTSCOREKEY, bestScore);
+				Utils.saveKey(context, MyConstant.GUANKAEKEY, guanka.getGuanka());
+				Utils.saveKey(context, MyConstant.CURRENTSCOREKEY, guanka.getDefen());
+				Utils.saveKey(context, MyConstant.GOLDKEY, guanka.getGlod());
 				int n =0;
 				Log.d("zxc119", "exitAndSave Mainxinglist.size = "+Mainxinglist.size());
-				Utils.saveKey(context,ConstantUtil.STARKEY,1);//putString(ConstantUtil.STARKEY, objectStr);
+				Utils.saveKey(context, MyConstant.STARKEY,1);//putString(MyConstant.STARKEY, objectStr);
 				for(Xing obj:Mainxinglist){
 	            	Utils.saveObjectToShare(context, new StarObject(obj.getObject_x(),obj.getObject_y()
-	            			,obj.getColor(),obj.isAlive()), ConstantUtil.STARKEY+(n++));
-	            	Log.d("zxc01", "exit and save "+" key = "+(ConstantUtil.STARKEY+n)+ " islive = "+obj.isAlive());
+	            			,obj.getColor(),obj.isAlive()), MyConstant.STARKEY+(n++));
+	            	Log.d("zxc01", "exit and save "+" key = "+(MyConstant.STARKEY+n)+ " islive = "+obj.isAlive());
 				}
             }  
         });  
@@ -433,10 +432,10 @@ public class XingBiz {
 					suplesStarslist.clear();
 					bondAllRowStar = null;
 					boolean isAllRow =true;
-					for(int r = ConstantUtil.MAXROW -1 ;r>=0;r--){
+					for(int r = MyConstant.MAXROW -1; r>=0; r--){
 						isAllRow =true;
 						Xing first = null;
-						for(int j = ConstantUtil.MAXCLOUM - 1;j>=0;j--){
+						for(int j = MyConstant.MAXCLOUM - 1; j>=0; j--){
 							if(stars[r][j] != null && stars[r][j].isAlive()){
 								suplesStarslist.add(stars[r][j]);
 								if(first == null)
@@ -447,7 +446,7 @@ public class XingBiz {
 							}
 						}
 						if(isAllRow){
-							for(int l = ConstantUtil.MAXCLOUM -1 ;l>=0;l--){
+							for(int l = MyConstant.MAXCLOUM -1; l>=0; l--){
 								if(stars[0][l] != null && stars[0][l].isAlive()){
 									if(first != null && first.getObject_x() == stars[0][l].getObject_x()){
 										bondAllRowStar = first;
@@ -584,7 +583,7 @@ public class XingBiz {
 	// 用户点击屏幕事件
 	public void onDown(float x, float y) {
 		if (iscaozuo) {
-			boolean isDoubleClic = Utils.getKey(context, ConstantUtil.SINGLEDOUBLEKEY)==1?true:false;
+			boolean isDoubleClic = Utils.getKey(context, MyConstant.SINGLEDOUBLEKEY)==1?true:false;
 			for (Xing obj : Mainxinglist) {
 				if (obj.isAlive()) {
 					if (x > obj.getObject_x()
@@ -621,20 +620,20 @@ public class XingBiz {
 							if(isDoubleClic && obj.getClickTime() >1){
 								sounds.playSound(6, 0);
 								guanka.setBlockNumber(selectNumber);
-								if(selectNumber >= ConstantUtil.SCORECOOL && selectNumber < ConstantUtil.SCOREGOOD){
+								if(selectNumber >= MyConstant.SCORECOOL && selectNumber < MyConstant.SCOREGOOD){
 									lunchGoodScore(screen_width/2,screen_height/7*2,1);
 								}
-								if(selectNumber >= ConstantUtil.SCOREGOOD && selectNumber < ConstantUtil.VERYGOOD){
+								if(selectNumber >= MyConstant.SCOREGOOD && selectNumber < MyConstant.VERYGOOD){
 									lunchGoodScore(screen_width/2,screen_height/7*2,2);
 									sounds.playSound(11, 0);
 									bombNumber+=1;
 								}
-								if(selectNumber >= ConstantUtil.VERYGOOD){
+								if(selectNumber >= MyConstant.VERYGOOD){
 									lunchGoodScore(screen_width/2,screen_height/7*2,3);
 									sounds.playSound(11, 0);
 									bombNumber+=3;
 								}
-								if (selectNumber > ConstantUtil.SCORECOOL) {
+								if (selectNumber > MyConstant.SCORECOOL) {
 									bondNumber+=BONDNUMBERMAX; 
 									guanka.setGold(guanka.getGlod()+(selectNumber-BROCK_NUMBER));
 									sounds.playSound(2, 0);
@@ -644,20 +643,20 @@ public class XingBiz {
 							if(!isDoubleClic){
 								sounds.playSound(6, 0);
 								guanka.setBlockNumber(selectNumber);
-								if(selectNumber >= ConstantUtil.SCORECOOL && selectNumber < ConstantUtil.SCOREGOOD){
+								if(selectNumber >= MyConstant.SCORECOOL && selectNumber < MyConstant.SCOREGOOD){
 									lunchGoodScore(screen_width/2,screen_height/7*2,1);
 								}
-								if(selectNumber >= ConstantUtil.SCOREGOOD && selectNumber < ConstantUtil.VERYGOOD){
+								if(selectNumber >= MyConstant.SCOREGOOD && selectNumber < MyConstant.VERYGOOD){
 									lunchGoodScore(screen_width/2,screen_height/7*2,2);
 									sounds.playSound(11, 0);
 									bombNumber+=1;
 								}
-								if(selectNumber >= ConstantUtil.VERYGOOD){
+								if(selectNumber >= MyConstant.VERYGOOD){
 									lunchGoodScore(screen_width/2,screen_height/7*2,3);
 									sounds.playSound(11, 0);
 									bombNumber+=3;
 								}
-								if (selectNumber > ConstantUtil.SCORECOOL) {
+								if (selectNumber > MyConstant.SCORECOOL) {
 									bondNumber+=BONDNUMBERMAX; 
 									guanka.setGold(guanka.getGlod()+(selectNumber-BROCK_NUMBER));
 									sounds.playSound(2, 0);
@@ -691,7 +690,7 @@ public class XingBiz {
 							preClickColor = obj.getColor();
 							//guanka.setDefen(guanka.getDefen() + defen);
 						} else {
-							//if(Utils.getKey(context, ConstantUtil.SINGLEDOUBLEKEY) == 0)
+							//if(Utils.getKey(context, MyConstant.SINGLEDOUBLEKEY) == 0)
 							obj.setIsxuanzhong(false);
 						}
 						preSelectlist.clear();
@@ -861,8 +860,8 @@ public class XingBiz {
 		this.Mainxinglist.clear();
 		preSelectlist.clear();
 		preSelectlist.clear();
-		for(int r = 0;r<ConstantUtil.MAXROW;r++){
-			for(int j = 0;j<ConstantUtil.MAXCLOUM;j++){
+		for(int r = 0; r< MyConstant.MAXROW; r++){
+			for(int j = 0; j< MyConstant.MAXCLOUM; j++){
 				stars[r][j] = null;
 			}
 		}

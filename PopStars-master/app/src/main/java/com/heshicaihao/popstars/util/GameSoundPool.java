@@ -1,10 +1,10 @@
-package com.heshicaihao.popstars.gamesoundpool;
+package com.heshicaihao.popstars.util;
 
 import java.util.HashMap;
 import com.heshicaihao.popstars.MainActivity;
 import com.heshicaihao.popstars.R;
-import com.heshicaihao.popstars.util.Utils;
-import com.heshicaihao.popstars.constant.ConstantUtil;
+import com.heshicaihao.popstars.constant.MyConstant;
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -35,7 +35,7 @@ public class GameSoundPool {
 	}
 
 	public void playSound(int sound,int loop){
-		if(Utils.getKeyDefault(mainActivity, ConstantUtil.VOICEKEY) == 1){
+		if(Utils.getKeyDefault(mainActivity, MyConstant.VOICEKEY) == 1){
 			AudioManager am = (AudioManager)mainActivity.getSystemService(Context.AUDIO_SERVICE);
 			float stramVolumeCurrent = am.getStreamVolume(AudioManager.STREAM_MUSIC);
 			float stramMaxVolumeCurrent = am.getStreamVolume(AudioManager.STREAM_MUSIC);

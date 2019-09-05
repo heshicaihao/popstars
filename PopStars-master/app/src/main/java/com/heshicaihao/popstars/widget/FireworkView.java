@@ -1,4 +1,4 @@
-package com.heshicaihao.popstars.view;
+package com.heshicaihao.popstars.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,7 +11,7 @@ import android.view.WindowManager;
 
 import java.util.LinkedList;
 
-import com.heshicaihao.popstars.gamesoundpool.GameSoundPool;
+import com.heshicaihao.popstars.util.GameSoundPool;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.heshicaihao.popstars.view;
+package com.heshicaihao.popstars.ui;
 
 import com.heshicaihao.popstars.R;
 

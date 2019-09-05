@@ -1,4 +1,4 @@
-package com.heshicaihao.popstars.view;
+package com.heshicaihao.popstars.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,8 +8,8 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
-import com.heshicaihao.popstars.constant.ConstantUtil;
-import com.heshicaihao.popstars.gamesoundpool.GameSoundPool;
+import com.heshicaihao.popstars.constant.MyConstant;
+import com.heshicaihao.popstars.util.GameSoundPool;
 import com.heshicaihao.popstars.object.TitleButton;
 import com.heshicaihao.popstars.R;
 import com.heshicaihao.popstars.util.Utils;
@@ -145,7 +145,7 @@ public class StartView extends BaseView {
 
             }
             // 判断第二个按钮是否被按下
-            else if (resumeGameButton.isClick(x, y) && Utils.getKey(context, ConstantUtil.STARKEY) == 1) {
+            else if (resumeGameButton.isClick(x, y) && Utils.getKey(context, MyConstant.STARKEY) == 1) {
                 sounds.playSound(4, 0);
                 isBtChange2 = true;
                 mainActivity.setResume(true);
@@ -172,9 +172,9 @@ public class StartView extends BaseView {
                 mainActivity.showIntrduceDialog();
 
             } else if (VoiceButton.isClick(x, y)) {
-                int voiceClick = Utils.getKeyDefault(getContext(), ConstantUtil.VOICEKEY);
+                int voiceClick = Utils.getKeyDefault(getContext(), MyConstant.VOICEKEY);
                 voiceClick = voiceClick == 0 ? 1 : 0;
-                Utils.saveKey(getContext(), ConstantUtil.VOICEKEY, voiceClick);
+                Utils.saveKey(getContext(), MyConstant.VOICEKEY, voiceClick);
                 HashMap<String, String> map = new HashMap<String, String>();
                 map.put("voiceClice", "" + voiceClick);
             } else if (advButton != null && advButton.isClick(x, y)) {
@@ -288,7 +288,7 @@ public class StartView extends BaseView {
                 button_y2, button.getWidth(), button.getHeight(), button, painSize);
 
         resumeGameButton.setFlashSpeed(200);
-        if (Utils.getKey(context, ConstantUtil.STARKEY) == 0) {
+        if (Utils.getKey(context, MyConstant.STARKEY) == 0) {
             //resumeGameButton.setBitmap(button2);
             resumeGameButton.setPainColor(getContext().getResources().getColor(R.color.text_gray_color));
             resumeGameButton.setAlpha(200);
@@ -361,7 +361,7 @@ public class StartView extends BaseView {
     @Override
     public void drawSelf() {
         // TODO Auto-generated method stub
-        int voiceClick = Utils.getKeyDefault(getContext(), ConstantUtil.VOICEKEY);
+        int voiceClick = Utils.getKeyDefault(getContext(), MyConstant.VOICEKEY);
         if (voiceClick == 0) {
             VoiceButton.setBitmap(close_bitmap);
         } else {
@@ -369,7 +369,7 @@ public class StartView extends BaseView {
         }
 
         try {
-            bestScore = Utils.getKey(context, ConstantUtil.BESTSCOREKEY);
+            bestScore = Utils.getKey(context, MyConstant.BESTSCOREKEY);
             canvas = sfh.lockCanvas();
             lock = true;
             //Log.d("zxc225", "StartdrawSelfiew drawSelf");

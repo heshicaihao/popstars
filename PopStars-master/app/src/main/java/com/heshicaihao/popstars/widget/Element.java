@@ -1,4 +1,4 @@
-package com.heshicaihao.popstars.view;
+package com.heshicaihao.popstars.widget;
 
 import android.graphics.Bitmap;
 

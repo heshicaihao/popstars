@@ -101,9 +101,9 @@ public class Utils {
 		Editor editor = share.edit();
 		editor.clear().commit();
 		/*
-		 * int n = 0; for(int i=0;i<ConstantUtil.MAXROW;i++){ for(int
-		 * j=0;j<ConstantUtil.MAXCLOUM;j++){
-		 * editor.remove(ConstantUtil.STARKEY+(n++)); editor.commit(); } }
+		 * int n = 0; for(int i=0;i<MyConstant.MAXROW;i++){ for(int
+		 * j=0;j<MyConstant.MAXCLOUM;j++){
+		 * editor.remove(MyConstant.STARKEY+(n++)); editor.commit(); } }
 		 */
 	}
 

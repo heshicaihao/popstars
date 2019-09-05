@@ -1,4 +1,4 @@
-package com.heshicaihao.popstars.view;
+package com.heshicaihao.popstars.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -17,7 +17,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.heshicaihao.popstars.gamesoundpool.GameSoundPool;
+import com.heshicaihao.popstars.util.GameSoundPool;
 import com.heshicaihao.popstars.R;
 import com.heshicaihao.popstars.util.Utils;
 

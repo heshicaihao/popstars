@@ -1,6 +1,6 @@
 package com.heshicaihao.popstars.constant;
 
-public class ConstantUtil {
+public class MyConstant {
 	
 	public final static int RECOVERLIVE = 100;
 	public final static int RED=0;//红色

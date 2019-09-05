@@ -3,8 +3,8 @@ package com.heshicaihao.popstars.object;
 import java.util.List;
 import java.util.Random;
 
-import com.heshicaihao.popstars.gamesoundpool.GameSoundPool;
-import com.heshicaihao.popstars.constant.ConstantUtil;
+import com.heshicaihao.popstars.constant.MyConstant;
+import com.heshicaihao.popstars.util.GameSoundPool;
 import com.heshicaihao.popstars.R;
 import com.heshicaihao.popstars.util.Utils;
 
@@ -73,35 +73,35 @@ public class Xing extends GameObject {
 
 	public void initBitmap() {
 		switch (color) {
-		case ConstantUtil.RED: {
+		case MyConstant.RED: {
 			xingbitmap = BitmapFactory.decodeResource(resources,
 					R.mipmap.block_red);
 			starColorId = R.mipmap.su_pink_block;
 
 			break;
 		}
-		case ConstantUtil.GREEN: {
+		case MyConstant.GREEN: {
 			xingbitmap = BitmapFactory.decodeResource(resources,
 					R.mipmap.block_green);
 			starColorId = R.mipmap.su_lightgreen_block;
 
 			break;
 		}
-		case ConstantUtil.BLUE: {
+		case MyConstant.BLUE: {
 			xingbitmap = BitmapFactory.decodeResource(resources,
 					R.mipmap.block_blue);
 			starColorId = R.mipmap.su_blue_block;
 
 			break;
 		}
-		case ConstantUtil.YELLOW: {
+		case MyConstant.YELLOW: {
 			xingbitmap = BitmapFactory.decodeResource(resources,
 					R.mipmap.block_yellow);
 			starColorId = R.mipmap.su_yellow_block;
 
 			break;
 		}
-		case ConstantUtil.PINK: {
+		case MyConstant.PINK: {
 			xingbitmap = BitmapFactory.decodeResource(resources,
 					R.mipmap.block_purple);
 			starColorId = R.mipmap.su_purple_block;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.heshicaihao.popstars.view;
+package com.heshicaihao.popstars.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;

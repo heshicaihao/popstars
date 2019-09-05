@@ -1,4 +1,4 @@
-package com.heshicaihao.popstars.view;
+package com.heshicaihao.popstars.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -11,7 +11,7 @@ import android.graphics.Paint;
 //import android.graphics.AvoidXfermode.Mode;
 import android.view.animation.AccelerateInterpolator;
 
-import com.heshicaihao.popstars.gamesoundpool.GameSoundPool;
+import com.heshicaihao.popstars.util.GameSoundPool;
 import com.heshicaihao.popstars.R;
 
 
