@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.heshicaihao.popstars.util.Utils;
+import com.heshicaihao.popstars.utils.GameUtils;
 
 
 /**
@@ -60,7 +60,7 @@ public class ExplosionField extends View {
     }
 
     private void init() {
-        Arrays.fill(mExpandInset, Utils.dp2Px(32));
+        Arrays.fill(mExpandInset, GameUtils.dp2Px(32));
     }
 
     

@@ -2,11 +2,11 @@ package com.heshicaihao.popstars.widget;
 
 import java.util.LinkedList;
 
-import com.heshicaihao.popstars.constant.MyConstant;
-import com.heshicaihao.popstars.util.GameSoundPool;
-import com.heshicaihao.popstars.util.Utils;
-import com.heshicaihao.popstars.ui.XingBiz;
-import com.heshicaihao.popstars.ui.Guanka;
+import com.heshicaihao.popstars.utils.constant.MyConstant;
+import com.heshicaihao.popstars.utils.GameSoundPool;
+import com.heshicaihao.popstars.utils.GameUtils;
+import com.heshicaihao.popstars.view.XingBiz;
+import com.heshicaihao.popstars.view.Guanka;
 import com.heshicaihao.popstars.MainActivity;
 import com.heshicaihao.popstars.R;
 
@@ -83,25 +83,25 @@ public class MainView extends BaseView {
 		background = BitmapFactory.decodeResource(getResources(),
 				R.mipmap.background);
 
-		background = Utils.getBitmap(background, (int) screen_width,
+		background = GameUtils.getBitmap(background, (int) screen_width,
 				(int) screen_height);
 
 		/*
 		 * city = BitmapFactory.decodeResource(getResources(), R.mipmap.city);
 		 * float cityScale = (float) (screen_width / city.getWidth()); city =
-		 * Utils.getBitmap(city, (int) ((int) city.getWidth() * cityScale),
+		 * GameUtils.getBitmap(city, (int) ((int) city.getWidth() * cityScale),
 		 * (int) cityScale * city.getHeight());
 		 */
 
 		button = BitmapFactory
 				.decodeResource(getResources(), R.mipmap.button);
 		button_scale = screen_width / button.getWidth() * BUTTON_WIDE_PRO;
-		button = Utils.getBitmap(button,
+		button = GameUtils.getBitmap(button,
 				(int) ((int) button.getWidth() * button_scale),
 				(int) ((int) button.getHeight() * button_scale));
 		button2 = BitmapFactory.decodeResource(getResources(),
 				R.mipmap.button2);
-		button2 = Utils.getBitmap(button2,
+		button2 = GameUtils.getBitmap(button2,
 				(int) ((int) button2.getWidth() * button_scale),
 				(int) ((int) button2.getHeight() * button_scale));
 		// 按钮的放缩比例

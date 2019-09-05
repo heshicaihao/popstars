@@ -27,7 +27,8 @@ android {
     android.applicationVariants.all { variant ->
 
         variant.outputs.all {
-            outputFileName = "xingxing_${variant.versionCode}_v${variant.versionName}_${buildType.name}.apk"
+//            outputFileName = "xingxing_${variant.versionCode}_v${variant.versionName}_${buildType.name}.apk"
+            outputFileName = "妈妈消灭星星.apk"
         }
 
     }
@@ -60,7 +61,5 @@ android {
 }
 
 dependencies {
-//    implementation fileTree(include: ['*.jar'], dir: 'libs')
-//    implementation 'com.android.support:appcompat-v7:28.0.0'
-//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
 }

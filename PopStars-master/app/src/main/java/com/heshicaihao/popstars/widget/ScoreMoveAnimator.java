@@ -24,8 +24,8 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
 
-import com.heshicaihao.popstars.util.Utils;
-import com.heshicaihao.popstars.object.moveScoreText;
+import com.heshicaihao.popstars.utils.GameUtils;
+import com.heshicaihao.popstars.view.object.moveScoreText;
 
 
 public class ScoreMoveAnimator extends ValueAnimator {
@@ -36,10 +36,10 @@ public class ScoreMoveAnimator extends ValueAnimator {
     private static final Interpolator SMALL_DEFAULT_INTERPOLATOR = new AccelerateInterpolator(0.3f);
     private static final float END_VALUE = 1.4f;
     private static final float SMALL_END_VALUE = 1.5f;
-    private static final float X = Utils.dp2Px(5);
-    private static final float Y = Utils.dp2Px(20);
-    private static final float V = Utils.dp2Px(2);
-    private static final float W = Utils.dp2Px(1);
+    private static final float X = GameUtils.dp2Px(5);
+    private static final float Y = GameUtils.dp2Px(20);
+    private static final float V = GameUtils.dp2Px(2);
+    private static final float W = GameUtils.dp2Px(1);
 
     private Paint mPaint;
     private Rect mBound;

@@ -11,7 +11,7 @@ import android.view.WindowManager;
 
 import java.util.LinkedList;
 
-import com.heshicaihao.popstars.util.GameSoundPool;
+import com.heshicaihao.popstars.utils.GameSoundPool;
 
 
 /**

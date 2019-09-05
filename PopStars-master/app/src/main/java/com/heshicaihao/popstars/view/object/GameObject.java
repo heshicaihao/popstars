@@ -1,4 +1,4 @@
-package com.heshicaihao.popstars.object;
+package com.heshicaihao.popstars.view.object;
 
 import android.content.res.Resources;
 import android.graphics.Canvas;

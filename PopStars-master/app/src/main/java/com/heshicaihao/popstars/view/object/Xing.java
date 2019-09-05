@@ -1,12 +1,12 @@
-package com.heshicaihao.popstars.object;
+package com.heshicaihao.popstars.view.object;
 
 import java.util.List;
 import java.util.Random;
 
-import com.heshicaihao.popstars.constant.MyConstant;
-import com.heshicaihao.popstars.util.GameSoundPool;
+import com.heshicaihao.popstars.utils.constant.MyConstant;
+import com.heshicaihao.popstars.utils.GameSoundPool;
 import com.heshicaihao.popstars.R;
-import com.heshicaihao.popstars.util.Utils;
+import com.heshicaihao.popstars.utils.GameUtils;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -110,7 +110,7 @@ public class Xing extends GameObject {
 		}
 
 		}
-		xingbitmap = Utils.getBitmap(xingbitmap, (int) (object_width),
+		xingbitmap = GameUtils.getBitmap(xingbitmap, (int) (object_width),
 				(int) (object_height));
 
 	}

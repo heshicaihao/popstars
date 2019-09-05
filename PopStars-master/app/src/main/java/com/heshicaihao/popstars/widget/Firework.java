@@ -17,9 +17,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.heshicaihao.popstars.util.GameSoundPool;
+import com.heshicaihao.popstars.utils.GameSoundPool;
 import com.heshicaihao.popstars.R;
-import com.heshicaihao.popstars.util.Utils;
+import com.heshicaihao.popstars.utils.GameUtils;
 
 
 public class Firework {
@@ -145,11 +145,11 @@ public class Firework {
 				Bitmap mBitmap = BitmapFactory.decodeStream(is);
 
 				/*
-				 * mBitmap = Utils.getBitmap(mBitmap, (int) ((int)
+				 * mBitmap = GameUtils.getBitmap(mBitmap, (int) ((int)
 				 * mBitmap.getWidth() * bitmapScale), (int) bitmapScale *
 				 * mBitmap.getHeight());
 				 */
-				Bitmap shapeBitmap = Utils.drawShapeBitmap(mBitmap,
+				Bitmap shapeBitmap = GameUtils.drawShapeBitmap(mBitmap,
 						(int) (srceenWidth / screenWidthMeasure * starSize),
 						"star");
 

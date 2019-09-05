@@ -9,18 +9,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.heshicaihao.popstars.constant.MyConstant;
-import com.heshicaihao.popstars.util.GameSoundPool;
-import com.heshicaihao.popstars.util.Utils;
-import com.heshicaihao.popstars.ui.CommomDialog;
-import com.heshicaihao.popstars.ui.CustomDialog;
+import com.heshicaihao.popstars.utils.constant.MyConstant;
+import com.heshicaihao.popstars.utils.GameSoundPool;
+import com.heshicaihao.popstars.utils.GameUtils;
+import com.heshicaihao.popstars.view.CommomDialog;
+import com.heshicaihao.popstars.view.CustomDialog;
 import com.heshicaihao.popstars.widget.FireworkView;
 import com.heshicaihao.popstars.widget.MainView;
 import com.heshicaihao.popstars.widget.StartView;
@@ -30,17 +27,13 @@ import java.util.HashMap;
 
 public class MainActivity extends Activity {
 
-    int n;
-    int score;
-    private static final int REQUEST_CODE = 0; // 请求码
-
+    private int preScore;
     private GameSoundPool sounds;
     private MainView mainView;
     private StartView startView;
     private int view = 1;
     private boolean isResumeLive = false;
     private int currentGuanKa;
-    private int preScore;
     boolean isResume = false;
     private Handler handler = new Handler() {
         @SuppressLint({"WrongConstant"})
@@ -77,7 +70,6 @@ public class MainActivity extends Activity {
                 }
             } else if (msg.what == MyConstant.SHOW_DIEDIALOG) {
                 Toast.makeText(MainActivity.this, "闯关失败再来一局", Toast.LENGTH_SHORT).show();
-//				showDieDialog();
                 toMainView();
             } else if (msg.what == MyConstant.WELCOME_SOUND) {
                 sounds.playSound(8, 0);
@@ -211,13 +203,13 @@ public class MainActivity extends Activity {
                 dialog.dismiss();
             }
         });
-        singleClick = Utils.getKey(this, MyConstant.SINGLEDOUBLEKEY);
+        singleClick = GameUtils.getKey(this, MyConstant.SINGLEDOUBLEKEY);
         builderMenu.setDoubleButton(this.getResources().getString(singleClick == 0 ? R.string.single_click : R.string.double_click), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 //dialog.dismiss();
                 singleClick = singleClick == 0 ? 1 : 0;
                 builderMenu.setDoubleButtonTitle(MainActivity.this.getResources().getString(singleClick == 0 ? R.string.single_click : R.string.double_click));
-                Utils.saveKey(MainActivity.this, MyConstant.SINGLEDOUBLEKEY, singleClick);
+                GameUtils.saveKey(MainActivity.this, MyConstant.SINGLEDOUBLEKEY, singleClick);
                 builderMenu.setDoubleDrable(singleClick == 0 ? R.mipmap.double_click1 : R.mipmap.double_click2);
                 HashMap<String, String> map = new HashMap<String, String>();
                 map.put("doubleClice", "" + singleClick);
@@ -229,11 +221,11 @@ public class MainActivity extends Activity {
             }
         }, singleClick == 0 ? R.mipmap.double_click1 : R.mipmap.double_click2);
 
-        voiceClick = Utils.getKeyDefault(this, MyConstant.VOICEKEY);
+        voiceClick = GameUtils.getKeyDefault(this, MyConstant.VOICEKEY);
         builderMenu.setVoiceButton(this.getResources().getString(R.string.voice), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 voiceClick = voiceClick == 0 ? 1 : 0;
-                Utils.saveKey(MainActivity.this, MyConstant.VOICEKEY, voiceClick);
+                GameUtils.saveKey(MainActivity.this, MyConstant.VOICEKEY, voiceClick);
                 builderMenu.setVoiceDrable(voiceClick == 0 ? R.mipmap.close_voice : R.mipmap.open_voice);
                 HashMap<String, String> map = new HashMap<String, String>();
                 map.put("voiceClice", "" + voiceClick);
@@ -256,8 +248,6 @@ public class MainActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         sounds = new GameSoundPool(this);
         sounds.initGameSound();
-//        PermissionsUtil.requestPermission(this);
-
         handler.postDelayed(runnable, 1000);
 
         if (view == 1) {
@@ -283,8 +273,6 @@ public class MainActivity extends Activity {
             startView = new StartView(this, sounds, fireworkView);
         }
         this.setContentView(startView);
-        //addMiniAdv();
-        //showDieDialog();
     }
 
     public boolean getDialogIsShow() {
@@ -311,7 +299,6 @@ public class MainActivity extends Activity {
             mainView.setThreadFlag(false);
             mainView.release();
         }
-        //Log.d("zxc","mainactivity endGame");
         this.finish();
     }
 
@@ -337,23 +324,12 @@ public class MainActivity extends Activity {
         isResume = false;
         isResumeLive = false;
 
-        //addMiniAdv();
-    }
-
-    public void addMiniAdv() {
-        LinearLayout adlayout = new LinearLayout(this);
-        adlayout.setGravity(Gravity.TOP);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.addRule(RelativeLayout.ALIGN_TOP);
-        this.addContentView(adlayout, layoutParams);
     }
 
     @Override
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-        //UMGameAgent.onResume(this);
         pause = false;
         if (startView != null && !firstInit) {
             startView.setPause(false);
@@ -408,10 +384,6 @@ public class MainActivity extends Activity {
         return handler;
     }
 
-    public void setHandler(Handler handler) {
-        this.handler = handler;
-    }
-
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -423,19 +395,5 @@ public class MainActivity extends Activity {
             handler.postDelayed(this, 2000);
         }
     };
-
-
-    public void getUpdatePoints(String currencyName, int pointTotal) {
-        final int glod = Utils.getKey(this, MyConstant.GOLDKEY);
-        Utils.saveKey(MainActivity.this, MyConstant.GOLDKEY, (glod + pointTotal));
-        if (builder != null)
-            builder.setGlod(glod + pointTotal);
-        Log.d("zxc117", "getUpdatePoints pointTotal = " + pointTotal);
-
-    }
-
-    public void getUpdatePointsFailed(String error) {
-
-    }
 
 }

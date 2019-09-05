@@ -1,4 +1,4 @@
-package com.heshicaihao.popstars.ui;
+package com.heshicaihao.popstars.view;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,12 +11,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.Log;
 
-import com.heshicaihao.popstars.constant.MyConstant;
-import com.heshicaihao.popstars.util.GameSoundPool;
-import com.heshicaihao.popstars.util.StarObject;
-import com.heshicaihao.popstars.util.Utils;
-import com.heshicaihao.popstars.object.GameObject;
-import com.heshicaihao.popstars.object.Xing;
+import com.heshicaihao.popstars.utils.constant.MyConstant;
+import com.heshicaihao.popstars.utils.GameSoundPool;
+import com.heshicaihao.popstars.view.object.StarObject;
+import com.heshicaihao.popstars.utils.GameUtils;
+import com.heshicaihao.popstars.view.object.GameObject;
+import com.heshicaihao.popstars.view.object.Xing;
 import com.heshicaihao.popstars.widget.FireworkView;
 import com.heshicaihao.popstars.widget.GoodSocre;
 import com.heshicaihao.popstars.widget.MainView;
@@ -317,16 +317,16 @@ public class XingBiz {
 		this.chuangguanwancheng = false;
 		isResetSpeed = false;
 		this.iscaozuo = false;
-		guanka.setZuigaofen(Utils.getKey(context, MyConstant.BESTSCOREKEY));
-		guanka.setGuanka(Utils.getKey(context, MyConstant.GUANKAEKEY));
+		guanka.setZuigaofen(GameUtils.getKey(context, MyConstant.BESTSCOREKEY));
+		guanka.setGuanka(GameUtils.getKey(context, MyConstant.GUANKAEKEY));
 		guanka.setMubiaofen(guanka.getmbf(guanka.getGuanka()));
-		guanka.setDefen(Utils.getKey(context, MyConstant.CURRENTSCOREKEY));
-		guanka.setGold(Utils.getKey(context, MyConstant.GOLDKEY));
+		guanka.setDefen(GameUtils.getKey(context, MyConstant.CURRENTSCOREKEY));
+		guanka.setGold(GameUtils.getKey(context, MyConstant.GOLDKEY));
 		guanka.setCurrentScore(guanka.getDefen());
 		int n = 0;
 		for(int i = 0; i< MyConstant.MAXROW; i++){
 			for(int j = 0; j< MyConstant.MAXCLOUM; j++){
-				Xing star = Utils.getObjectFromShare(context, MyConstant.STARKEY+(n++)
+				Xing star = GameUtils.getObjectFromShare(context, MyConstant.STARKEY+(n++)
 						, screen_width, screen_height, xwidth, xheight, id++);
 				if(star != null){
 					Mainxinglist.add(star);
@@ -348,16 +348,16 @@ public class XingBiz {
 				HashMap<String,String> map = new HashMap<String,String>();
 				map.put("exitAndSave","exitAndSave");
 
-				Utils.clearShare(context);
-				Utils.saveKey(context, MyConstant.BESTSCOREKEY, bestScore);
-				Utils.saveKey(context, MyConstant.GUANKAEKEY, guanka.getGuanka());
-				Utils.saveKey(context, MyConstant.CURRENTSCOREKEY, guanka.getDefen());
-				Utils.saveKey(context, MyConstant.GOLDKEY, guanka.getGlod());
+				GameUtils.clearShare(context);
+				GameUtils.saveKey(context, MyConstant.BESTSCOREKEY, bestScore);
+				GameUtils.saveKey(context, MyConstant.GUANKAEKEY, guanka.getGuanka());
+				GameUtils.saveKey(context, MyConstant.CURRENTSCOREKEY, guanka.getDefen());
+				GameUtils.saveKey(context, MyConstant.GOLDKEY, guanka.getGlod());
 				int n =0;
 				Log.d("zxc119", "exitAndSave Mainxinglist.size = "+Mainxinglist.size());
-				Utils.saveKey(context, MyConstant.STARKEY,1);//putString(MyConstant.STARKEY, objectStr);
+				GameUtils.saveKey(context, MyConstant.STARKEY,1);//putString(MyConstant.STARKEY, objectStr);
 				for(Xing obj:Mainxinglist){
-	            	Utils.saveObjectToShare(context, new StarObject(obj.getObject_x(),obj.getObject_y()
+	            	GameUtils.saveObjectToShare(context, new StarObject(obj.getObject_x(),obj.getObject_y()
 	            			,obj.getColor(),obj.isAlive()), MyConstant.STARKEY+(n++));
 	            	Log.d("zxc01", "exit and save "+" key = "+(MyConstant.STARKEY+n)+ " islive = "+obj.isAlive());
 				}
@@ -583,7 +583,7 @@ public class XingBiz {
 	// 用户点击屏幕事件
 	public void onDown(float x, float y) {
 		if (iscaozuo) {
-			boolean isDoubleClic = Utils.getKey(context, MyConstant.SINGLEDOUBLEKEY)==1?true:false;
+			boolean isDoubleClic = GameUtils.getKey(context, MyConstant.SINGLEDOUBLEKEY)==1?true:false;
 			for (Xing obj : Mainxinglist) {
 				if (obj.isAlive()) {
 					if (x > obj.getObject_x()
@@ -690,7 +690,7 @@ public class XingBiz {
 							preClickColor = obj.getColor();
 							//guanka.setDefen(guanka.getDefen() + defen);
 						} else {
-							//if(Utils.getKey(context, MyConstant.SINGLEDOUBLEKEY) == 0)
+							//if(GameUtils.getKey(context, MyConstant.SINGLEDOUBLEKEY) == 0)
 							obj.setIsxuanzhong(false);
 						}
 						preSelectlist.clear();

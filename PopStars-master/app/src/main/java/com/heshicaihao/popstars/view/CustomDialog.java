@@ -1,7 +1,7 @@
-package com.heshicaihao.popstars.ui;
+package com.heshicaihao.popstars.view;
 
 import com.heshicaihao.popstars.R;
-import com.heshicaihao.popstars.constant.MyConstant;
+import com.heshicaihao.popstars.utils.constant.MyConstant;
 
 import android.app.Dialog;
 import android.content.Context;

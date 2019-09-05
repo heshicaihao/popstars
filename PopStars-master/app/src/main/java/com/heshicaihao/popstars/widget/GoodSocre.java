@@ -11,7 +11,7 @@ import android.graphics.Paint;
 //import android.graphics.AvoidXfermode.Mode;
 import android.view.animation.AccelerateInterpolator;
 
-import com.heshicaihao.popstars.util.GameSoundPool;
+import com.heshicaihao.popstars.utils.GameSoundPool;
 import com.heshicaihao.popstars.R;
 
 

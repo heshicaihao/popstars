@@ -1,4 +1,4 @@
-package com.heshicaihao.popstars.constant;
+package com.heshicaihao.popstars.utils.constant;
 
 public class MyConstant {
 	
@@ -27,48 +27,18 @@ public class MyConstant {
 
 	public final static int MAXROW = 10;
 	public final static int MAXCLOUM = 10;
-	
-	public final static int BESTSCORE = 10000;
-	public final static int BESTSCORELABEL = 10008;
-	public final static int GUANKA = 10001;
-	public final static int TARGETSCORE = 10002;
-	public final static int TARGETSCORELabel = 10009;
-	public final static int SCORE = 10003;
-	public final static int BLOCKSCORE = 10004;
-	public final static int SUCESS = 10005;
-	public final static int STARTFLAG = 10005;
-	public final static int RUSUMEFLAG = 10006;
-	public final static int EXITFLAG = 10007;
-	public final static int LUCKSTARFLAG = 100010;
-	
+
 	public final static String BESTSCOREKEY = "bestScore";
 	public final static String GUANKAEKEY = "guanka";
 	public final static String CURRENTSCOREKEY = "currentScore";
 	public final static String GOLDKEY = "goldKey";
-	public final static String SINGLECLICKKEY = "singleClick";
-	public final static String VOICESTATEKEY = "voiceState";
-	public final static String LUNCKGLODKEY = "lunckGlod";
 	public final static String VOICEKEY = "voice";
 	public final static String SINGLEDOUBLEKEY = "singleOrDouble";
-	public final static String HASKEY = "hasSave";
-	
-	
 	public final static String STARKEY = "star";
-	
-	/*
-	 * 星星信息
-	 */
-	public final static String STARXKEY = "starx";
-	public final static String STARYKEY = "stary";
-	public final static String STARLIVEKEY = "starlive";
-	public final static String STARIDKEY = "starid";
-	public final static String STARCOLORKEY = "starcolor";
-	
+
 	public final static int SCORECOOL = 6;
 	public final static int SCOREGOOD = 9;
 	public final static int VERYGOOD = 14;
-	
-	
-	public final static int AWARDGLOD = 10;
-	
+
+
 }

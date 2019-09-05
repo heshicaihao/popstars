@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.heshicaihao.popstars.util;
+package com.heshicaihao.popstars.view.object;
 
 /*
  * Copyright (C) 2015 tyrantgit

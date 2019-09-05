@@ -1,11 +1,11 @@
-package com.heshicaihao.popstars.ui;
+package com.heshicaihao.popstars.view;
 
-import com.heshicaihao.popstars.constant.MyConstant;
-import com.heshicaihao.popstars.util.GameSoundPool;
-import com.heshicaihao.popstars.util.Utils;
-import com.heshicaihao.popstars.object.Button;
-import com.heshicaihao.popstars.object.GameObject;
-import com.heshicaihao.popstars.object.TitleButton;
+import com.heshicaihao.popstars.utils.constant.MyConstant;
+import com.heshicaihao.popstars.utils.GameSoundPool;
+import com.heshicaihao.popstars.utils.GameUtils;
+import com.heshicaihao.popstars.view.object.Button;
+import com.heshicaihao.popstars.view.object.GameObject;
+import com.heshicaihao.popstars.view.object.TitleButton;
 import com.heshicaihao.popstars.widget.MainView;
 import com.heshicaihao.popstars.R;
 
@@ -137,7 +137,7 @@ public class Guanka extends GameObject{
 		sourceBitmapHeight = (int) (screen_width/screenWidthMeasure*finalSourceBitmapHeight);
 				//第一行
 		best_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.announcement_bg);
-		best_bitmap = Utils.getBitmap(best_bitmap,(int) (screen_width*0.5f),sourceBitmapHeight);
+		best_bitmap = GameUtils.getBitmap(best_bitmap,(int) (screen_width*0.5f),sourceBitmapHeight);
 		
 		paintSize = (int) (screen_width/screenWidthMeasure*textSize);
 		
@@ -149,14 +149,14 @@ public class Guanka extends GameObject{
 		paint.setTextSize(paintSize);
 
 		guanka_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.announcement_bg);
-		guanka_bitmap = Utils.getBitmap(guanka_bitmap,(int) (screen_width*0.2f),sourceBitmapHeight);
+		guanka_bitmap = GameUtils.getBitmap(guanka_bitmap,(int) (screen_width*0.2f),sourceBitmapHeight);
 
 		guankaButton =new TitleButton(mMainView.getMainContext().getResources());
 		guankaButton.init(mMainView.getContext().getString(R.string.guanka),""+guanka,(guanka_bitmap.getWidth()+paint.measureText(mMainView.getContext().getString(R.string.guanka)))/2+dis*2,
 				bestScoreButton.getObject_y()+bestScoreButton.getObject_height()/2+guanka_bitmap.getHeight(),guanka_bitmap.getWidth(),guanka_bitmap.getHeight(),guanka_bitmap,paintSize);
 
 		target_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.announcement_bg);
-		target_bitmap = Utils.getBitmap(target_bitmap,(int) (screen_width*0.4f),sourceBitmapHeight);
+		target_bitmap = GameUtils.getBitmap(target_bitmap,(int) (screen_width*0.4f),sourceBitmapHeight);
 
 		targetScoreButton =new TitleButton(mMainView.getMainContext().getResources());
 		targetScoreButton.init(mMainView.getContext().getString(R.string.target_score),""+mubiaofen,screen_width-target_bitmap.getWidth()/2-dis-paint.measureText(mMainView.getContext().getString(R.string.target_score))/2,
@@ -165,13 +165,13 @@ public class Guanka extends GameObject{
 		
 		//菜单
 		pause_bitmap =  BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.pause);
-		pause_bitmap = Utils.getBitmap(pause_bitmap,(int) (screen_width*0.1f),(int) (screen_width*0.1f));
+		pause_bitmap = GameUtils.getBitmap(pause_bitmap,(int) (screen_width*0.1f),(int) (screen_width*0.1f));
 		pauseButton = new TitleButton(mMainView.getMainContext().getResources());
 		pauseButton.init(""," ",screen_width-pause_bitmap.getWidth(),targetScoreButton.getObject_y()-pause_bitmap.getHeight()-target_bitmap.getHeight()/2,pause_bitmap.getWidth(),pause_bitmap.getHeight(),pause_bitmap,paintSize);
 
 		//第三行
 		score_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.announcement_bg);
-		score_bitmap = Utils.getBitmap(score_bitmap,(int) (screen_width*0.5f),sourceBitmapHeight);
+		score_bitmap = GameUtils.getBitmap(score_bitmap,(int) (screen_width*0.5f),sourceBitmapHeight);
 
 		ScoreButton =new TitleButton(mMainView.getMainContext().getResources());
 		ScoreButton.init(" ",""+defen,screen_width/2,
@@ -182,7 +182,7 @@ public class Guanka extends GameObject{
 		//金币显示
 		luck_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.lucky_star);
 		float currentWidth = screen_width/720*lunckWideth;
-		luck_bitmap = Utils.getBitmap(luck_bitmap,(int)currentWidth,(int)currentWidth);
+		luck_bitmap = GameUtils.getBitmap(luck_bitmap,(int)currentWidth,(int)currentWidth);
 
 
 		//第四行
@@ -193,7 +193,7 @@ public class Guanka extends GameObject{
 		//第五行过关标识
 		sucess_bitmap =  BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.stage_clear);
 		float scal = screen_width*0.3f/sucess_bitmap.getWidth();
-		sucess_bitmap = Utils.getBitmap(sucess_bitmap,(int) (sucess_bitmap.getWidth()*scal),(int) (sucess_bitmap.getHeight()*scal));
+		sucess_bitmap = GameUtils.getBitmap(sucess_bitmap,(int) (sucess_bitmap.getWidth()*scal),(int) (sucess_bitmap.getHeight()*scal));
 		
 		sucessButton = new TitleButton(mMainView.getMainContext().getResources());
 		sucessButton.init("","",screen_width/2, block_y-sucess_bitmap.getHeight()/2,sucess_bitmap.getWidth(),sucess_bitmap.getHeight(),sucess_bitmap,paintSize);
@@ -202,7 +202,7 @@ public class Guanka extends GameObject{
 		
 		suplse_stars =  BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.un_thxgiftbagbackpic_2);
 		float suplse_scale = screen_width/suplse_stars.getWidth();
-		suplse_stars = Utils.getBitmap(suplse_stars,(int) (suplse_stars.getWidth()*suplse_scale),(int) (suplse_stars.getHeight()*suplse_scale));
+		suplse_stars = GameUtils.getBitmap(suplse_stars,(int) (suplse_stars.getWidth()*suplse_scale),(int) (suplse_stars.getHeight()*suplse_scale));
 		suplseButton = new TitleButton(mMainView.getMainContext().getResources());
 		suplseButton.init("","",screen_width/2-suplse_stars.getWidth()/2, screen_height/2,suplse_stars.getWidth(),suplse_stars.getHeight(),suplse_stars,paintSize);
 
@@ -237,7 +237,7 @@ public class Guanka extends GameObject{
 		mubiaofen=1000;
 		defen=0;
 		currentScore = defen;
-		glod = Utils.getKey(mMainView.getContext(), MyConstant.GOLDKEY);
+		glod = GameUtils.getKey(mMainView.getContext(), MyConstant.GOLDKEY);
 		needFlash = true;
 	}
 
@@ -415,8 +415,8 @@ public class Guanka extends GameObject{
 		}
 		if(shibaishow && !isDie){
 			isDie = true;
-			Utils.saveKey(mMainView.getContext(), MyConstant.BESTSCOREKEY, zuigaofen);
-	        Utils.saveKey(mMainView.getContext(), MyConstant.GOLDKEY, glod);
+			GameUtils.saveKey(mMainView.getContext(), MyConstant.BESTSCOREKEY, zuigaofen);
+	        GameUtils.saveKey(mMainView.getContext(), MyConstant.GOLDKEY, glod);
 	        mMainView.delayUpdateBlockBomb();
 		}
 				

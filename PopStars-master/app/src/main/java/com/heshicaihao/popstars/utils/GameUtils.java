@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.heshicaihao.popstars.util;
+package com.heshicaihao.popstars.utils;
 
 /*
  * Copyright (C) 2015 tyrantgit
@@ -37,7 +37,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import com.heshicaihao.popstars.object.Xing;
+import com.heshicaihao.popstars.view.object.StarObject;
+import com.heshicaihao.popstars.view.object.Xing;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -58,9 +59,9 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 
-public class Utils {
+public class GameUtils {
 
-	private Utils() {
+	private GameUtils() {
 	}
 
 	/**

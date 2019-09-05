@@ -1,7 +1,7 @@
 package com.heshicaihao.popstars.widget;
 
 
-import com.heshicaihao.popstars.util.GameSoundPool;
+import com.heshicaihao.popstars.utils.GameSoundPool;
 import com.heshicaihao.popstars.MainActivity;
 
 

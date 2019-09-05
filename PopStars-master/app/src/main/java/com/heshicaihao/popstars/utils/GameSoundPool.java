@@ -1,9 +1,9 @@
-package com.heshicaihao.popstars.util;
+package com.heshicaihao.popstars.utils;
 
 import java.util.HashMap;
 import com.heshicaihao.popstars.MainActivity;
 import com.heshicaihao.popstars.R;
-import com.heshicaihao.popstars.constant.MyConstant;
+import com.heshicaihao.popstars.utils.constant.MyConstant;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -23,7 +23,7 @@ public class GameSoundPool {
 		map.put(2, soundPool.load(mainActivity,R.raw.applause, 1));//游戏鼓励
 		map.put(3, soundPool.load(mainActivity,R.raw.su_gameover, 1));//游戏结束
 		map.put(4, soundPool.load(mainActivity,R.raw.button_start, 1));//点击按钮
-		//map.put(5, soundPool.load(mainActivity,R.raw.landing, 1));//游戏开始放砖块
+		map.put(5, soundPool.load(mainActivity,R.raw.landing, 1));//游戏开始放砖块
 		map.put(6, soundPool.load(mainActivity,R.raw.broken, 1));//砖块破裂
 		map.put(7, soundPool.load(mainActivity,R.raw.round_clear, 1));//游戏胜利
 		map.put(8, soundPool.load(mainActivity,R.raw.welcome, 1));//首次进入
@@ -35,7 +35,7 @@ public class GameSoundPool {
 	}
 
 	public void playSound(int sound,int loop){
-		if(Utils.getKeyDefault(mainActivity, MyConstant.VOICEKEY) == 1){
+		if(GameUtils.getKeyDefault(mainActivity, MyConstant.VOICEKEY) == 1){
 			AudioManager am = (AudioManager)mainActivity.getSystemService(Context.AUDIO_SERVICE);
 			float stramVolumeCurrent = am.getStreamVolume(AudioManager.STREAM_MUSIC);
 			float stramMaxVolumeCurrent = am.getStreamVolume(AudioManager.STREAM_MUSIC);

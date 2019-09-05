@@ -8,11 +8,11 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
-import com.heshicaihao.popstars.constant.MyConstant;
-import com.heshicaihao.popstars.util.GameSoundPool;
-import com.heshicaihao.popstars.object.TitleButton;
+import com.heshicaihao.popstars.utils.constant.MyConstant;
+import com.heshicaihao.popstars.utils.GameSoundPool;
+import com.heshicaihao.popstars.view.object.TitleButton;
 import com.heshicaihao.popstars.R;
-import com.heshicaihao.popstars.util.Utils;
+import com.heshicaihao.popstars.utils.GameUtils;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -145,7 +145,7 @@ public class StartView extends BaseView {
 
             }
             // 判断第二个按钮是否被按下
-            else if (resumeGameButton.isClick(x, y) && Utils.getKey(context, MyConstant.STARKEY) == 1) {
+            else if (resumeGameButton.isClick(x, y) && GameUtils.getKey(context, MyConstant.STARKEY) == 1) {
                 sounds.playSound(4, 0);
                 isBtChange2 = true;
                 mainActivity.setResume(true);
@@ -172,9 +172,9 @@ public class StartView extends BaseView {
                 mainActivity.showIntrduceDialog();
 
             } else if (VoiceButton.isClick(x, y)) {
-                int voiceClick = Utils.getKeyDefault(getContext(), MyConstant.VOICEKEY);
+                int voiceClick = GameUtils.getKeyDefault(getContext(), MyConstant.VOICEKEY);
                 voiceClick = voiceClick == 0 ? 1 : 0;
-                Utils.saveKey(getContext(), MyConstant.VOICEKEY, voiceClick);
+                GameUtils.saveKey(getContext(), MyConstant.VOICEKEY, voiceClick);
                 HashMap<String, String> map = new HashMap<String, String>();
                 map.put("voiceClice", "" + voiceClick);
             } else if (advButton != null && advButton.isClick(x, y)) {
@@ -229,17 +229,17 @@ public class StartView extends BaseView {
         BUTTON_DIS = (int) (BUTTON_DIS * screen_width / screenWidthMeasure);
         //菜单
         close_bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.close_voice);
-        close_bitmap = Utils.getBitmap(close_bitmap, (int) (screen_width * 0.1f), (int) (screen_width * 0.1f));
+        close_bitmap = GameUtils.getBitmap(close_bitmap, (int) (screen_width * 0.1f), (int) (screen_width * 0.1f));
         open_bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.open_voice);
-        open_bitmap = Utils.getBitmap(open_bitmap, (int) (screen_width * 0.1f), (int) (screen_width * 0.1f));
+        open_bitmap = GameUtils.getBitmap(open_bitmap, (int) (screen_width * 0.1f), (int) (screen_width * 0.1f));
         VoiceButton = new TitleButton(getContext().getResources());
         VoiceButton.init("", " ", screen_width - close_bitmap.getWidth(), BUTTON_DIS / 2, close_bitmap.getWidth(), close_bitmap.getHeight(), close_bitmap, 1);
 
         background = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.background_main);
-        background = Utils.getBitmap(background, (int) screen_width, (int) screen_height);
+        background = GameUtils.getBitmap(background, (int) screen_width, (int) screen_height);
 
         best_bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.announcement_bg);
-        best_bitmap = Utils.getBitmap(best_bitmap, (int) (screen_width * 0.5f), (int) (screen_width / screenWidthMeasure * sourceBitmapHeight));
+        best_bitmap = GameUtils.getBitmap(best_bitmap, (int) (screen_width * 0.5f), (int) (screen_width / screenWidthMeasure * sourceBitmapHeight));
 
         best_title_length = paint.measureText(context.getString(R.string.best_score));
         best_x = screen_width / 2;
@@ -250,17 +250,17 @@ public class StartView extends BaseView {
         //background = BitmapFactory.decodeResource(getResources(),
         //		R.mipmap.beijing);
         city = BitmapFactory.decodeResource(getResources(), R.mipmap.bg_hiscore);
-        city = Utils.getBitmap(city, (int) screen_width, (int) screen_width / city.getWidth() * city.getHeight());
+        city = GameUtils.getBitmap(city, (int) screen_width, (int) screen_width / city.getWidth() * city.getHeight());
         text = BitmapFactory.decodeResource(getResources(), R.mipmap.popstar);
         popScale = (float) (screen_width / text.getWidth()) * 0.8f;
-        text = Utils.getBitmap(text, (int) ((int) text.getWidth() * popScale), (int) ((int) text.getHeight() * popScale));
+        text = GameUtils.getBitmap(text, (int) ((int) text.getWidth() * popScale), (int) ((int) text.getHeight() * popScale));
         button = BitmapFactory
                 .decodeResource(getResources(), R.mipmap.button);
         button_scale = screen_width / button.getWidth() * BUTTON_WIDE_PRO;
-        button = Utils.getBitmap(button, (int) ((int) button.getWidth() * button_scale), (int) ((int) button.getHeight() * button_scale * 0.9f));
+        button = GameUtils.getBitmap(button, (int) ((int) button.getWidth() * button_scale), (int) ((int) button.getHeight() * button_scale * 0.9f));
         button2 = BitmapFactory
                 .decodeResource(getResources(), R.mipmap.button2);
-        button2 = Utils.getBitmap(button2, (int) ((int) button2.getWidth() * button_scale), (int) ((int) button2.getHeight() * button_scale * 0.9f));
+        button2 = GameUtils.getBitmap(button2, (int) ((int) button2.getWidth() * button_scale), (int) ((int) button2.getHeight() * button_scale * 0.9f));
 
         text_x = screen_width / 2 - text.getWidth() / 2;
         text_y = screen_height / 2 - text.getHeight();
@@ -288,7 +288,7 @@ public class StartView extends BaseView {
                 button_y2, button.getWidth(), button.getHeight(), button, painSize);
 
         resumeGameButton.setFlashSpeed(200);
-        if (Utils.getKey(context, MyConstant.STARKEY) == 0) {
+        if (GameUtils.getKey(context, MyConstant.STARKEY) == 0) {
             //resumeGameButton.setBitmap(button2);
             resumeGameButton.setPainColor(getContext().getResources().getColor(R.color.text_gray_color));
             resumeGameButton.setAlpha(200);
@@ -361,7 +361,7 @@ public class StartView extends BaseView {
     @Override
     public void drawSelf() {
         // TODO Auto-generated method stub
-        int voiceClick = Utils.getKeyDefault(getContext(), MyConstant.VOICEKEY);
+        int voiceClick = GameUtils.getKeyDefault(getContext(), MyConstant.VOICEKEY);
         if (voiceClick == 0) {
             VoiceButton.setBitmap(close_bitmap);
         } else {
@@ -369,7 +369,7 @@ public class StartView extends BaseView {
         }
 
         try {
-            bestScore = Utils.getKey(context, MyConstant.BESTSCOREKEY);
+            bestScore = GameUtils.getKey(context, MyConstant.BESTSCOREKEY);
             canvas = sfh.lockCanvas();
             lock = true;
             //Log.d("zxc225", "StartdrawSelfiew drawSelf");
