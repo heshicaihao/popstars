@@ -47,7 +47,7 @@ public class ExplosionAnimator extends ValueAnimator {
     private static final float V = Utils.dp2Px(2);
     private static final float W = Utils.dp2Px(1);
 
-    int randColor[] = {R.drawable.redstar,R.drawable.bluestar,R.drawable.greenstar,R.drawable.pinkstar,R.drawable.yellowstar};
+    int randColor[] = {R.mipmap.redstar,R.mipmap.bluestar,R.mipmap.greenstar,R.mipmap.pinkstar,R.mipmap.yellowstar};
     private Paint mPaint;
     private Particle[] mParticles;
     private Rect mBound;

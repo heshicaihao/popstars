@@ -7,7 +7,7 @@
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="470dp"
-        android:background="@drawable/background" >
+        android:background="@mipmap/background" >
 
         <LinearLayout
             android:id="@+id/context"
@@ -120,7 +120,7 @@
                     android:id="@+id/voice_click"
                     android:layout_width="@dimen/button_size"
                     android:layout_height="@dimen/button_size"
-                    android:background="@drawable/open_voice"
+                    android:background="@mipmap/open_voice"
                     android:gravity="center"
                     android:textStyle="bold" />
 

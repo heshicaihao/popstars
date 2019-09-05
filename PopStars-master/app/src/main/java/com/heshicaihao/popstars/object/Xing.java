@@ -75,36 +75,36 @@ public class Xing extends GameObject {
 		switch (color) {
 		case ConstantUtil.RED: {
 			xingbitmap = BitmapFactory.decodeResource(resources,
-					R.drawable.block_red);
-			starColorId = R.drawable.su_pink_block;
+					R.mipmap.block_red);
+			starColorId = R.mipmap.su_pink_block;
 
 			break;
 		}
 		case ConstantUtil.GREEN: {
 			xingbitmap = BitmapFactory.decodeResource(resources,
-					R.drawable.block_green);
-			starColorId = R.drawable.su_lightgreen_block;
+					R.mipmap.block_green);
+			starColorId = R.mipmap.su_lightgreen_block;
 
 			break;
 		}
 		case ConstantUtil.BLUE: {
 			xingbitmap = BitmapFactory.decodeResource(resources,
-					R.drawable.block_blue);
-			starColorId = R.drawable.su_blue_block;
+					R.mipmap.block_blue);
+			starColorId = R.mipmap.su_blue_block;
 
 			break;
 		}
 		case ConstantUtil.YELLOW: {
 			xingbitmap = BitmapFactory.decodeResource(resources,
-					R.drawable.block_yellow);
-			starColorId = R.drawable.su_yellow_block;
+					R.mipmap.block_yellow);
+			starColorId = R.mipmap.su_yellow_block;
 
 			break;
 		}
 		case ConstantUtil.PINK: {
 			xingbitmap = BitmapFactory.decodeResource(resources,
-					R.drawable.block_purple);
-			starColorId = R.drawable.su_purple_block;
+					R.mipmap.block_purple);
+			starColorId = R.mipmap.su_purple_block;
 
 			break;
 		}

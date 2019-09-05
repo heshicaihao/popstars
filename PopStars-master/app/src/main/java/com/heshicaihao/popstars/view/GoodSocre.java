@@ -48,11 +48,11 @@ public class GoodSocre {
 	
 	public void init(){
 		if(mode == 1){
-			bitmap =  BitmapFactory.decodeResource(context.getResources(), R.drawable.combo_cool);
+			bitmap =  BitmapFactory.decodeResource(context.getResources(), R.mipmap.combo_cool);
 		}else if(mode == 2){
-			bitmap =  BitmapFactory.decodeResource(context.getResources(), R.drawable.combo_awesome);
+			bitmap =  BitmapFactory.decodeResource(context.getResources(), R.mipmap.combo_awesome);
 		}else{
-			bitmap =  BitmapFactory.decodeResource(context.getResources(), R.drawable.combo_fantastic);
+			bitmap =  BitmapFactory.decodeResource(context.getResources(), R.mipmap.combo_fantastic);
 		}
 		location.x-= bitmap.getWidth()/2;
 	}

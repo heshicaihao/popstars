@@ -218,7 +218,7 @@ public class MainActivity extends Activity {
                 singleClick = singleClick == 0 ? 1 : 0;
                 builderMenu.setDoubleButtonTitle(MainActivity.this.getResources().getString(singleClick == 0 ? R.string.single_click : R.string.double_click));
                 Utils.saveKey(MainActivity.this, ConstantUtil.SINGLEDOUBLEKEY, singleClick);
-                builderMenu.setDoubleDrable(singleClick == 0 ? R.drawable.double_click1 : R.drawable.double_click2);
+                builderMenu.setDoubleDrable(singleClick == 0 ? R.mipmap.double_click1 : R.mipmap.double_click2);
                 HashMap<String, String> map = new HashMap<String, String>();
                 map.put("doubleClice", "" + singleClick);
                 if (singleClick == 0) {
@@ -227,18 +227,18 @@ public class MainActivity extends Activity {
                     }
                 }
             }
-        }, singleClick == 0 ? R.drawable.double_click1 : R.drawable.double_click2);
+        }, singleClick == 0 ? R.mipmap.double_click1 : R.mipmap.double_click2);
 
         voiceClick = Utils.getKeyDefault(this, ConstantUtil.VOICEKEY);
         builderMenu.setVoiceButton(this.getResources().getString(R.string.voice), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 voiceClick = voiceClick == 0 ? 1 : 0;
                 Utils.saveKey(MainActivity.this, ConstantUtil.VOICEKEY, voiceClick);
-                builderMenu.setVoiceDrable(voiceClick == 0 ? R.drawable.close_voice : R.drawable.open_voice);
+                builderMenu.setVoiceDrable(voiceClick == 0 ? R.mipmap.close_voice : R.mipmap.open_voice);
                 HashMap<String, String> map = new HashMap<String, String>();
                 map.put("voiceClice", "" + voiceClick);
             }
-        }, voiceClick == 0 ? R.drawable.close_voice : R.drawable.open_voice);
+        }, voiceClick == 0 ? R.mipmap.close_voice : R.mipmap.open_voice);
 
         dialog = builderMenu.create(R.layout.dialog_commom);
         dialog.show();

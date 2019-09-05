@@ -3,7 +3,7 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background" >
+    android:background="@mipmap/background" >
 
     <LinearLayout
         android:id="@+id/context"

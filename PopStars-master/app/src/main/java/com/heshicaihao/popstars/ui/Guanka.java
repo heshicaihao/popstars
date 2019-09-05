@@ -136,7 +136,7 @@ public class Guanka extends GameObject{
 		dis = (int) (screen_width/screenWidthMeasure*final_dis);
 		sourceBitmapHeight = (int) (screen_width/screenWidthMeasure*finalSourceBitmapHeight);
 				//第一行
-		best_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.drawable.announcement_bg);
+		best_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.announcement_bg);
 		best_bitmap = Utils.getBitmap(best_bitmap,(int) (screen_width*0.5f),sourceBitmapHeight);
 		
 		paintSize = (int) (screen_width/screenWidthMeasure*textSize);
@@ -148,14 +148,14 @@ public class Guanka extends GameObject{
 		//第二行
 		paint.setTextSize(paintSize);
 
-		guanka_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.drawable.announcement_bg);
+		guanka_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.announcement_bg);
 		guanka_bitmap = Utils.getBitmap(guanka_bitmap,(int) (screen_width*0.2f),sourceBitmapHeight);
 
 		guankaButton =new TitleButton(mMainView.getMainContext().getResources());
 		guankaButton.init(mMainView.getContext().getString(R.string.guanka),""+guanka,(guanka_bitmap.getWidth()+paint.measureText(mMainView.getContext().getString(R.string.guanka)))/2+dis*2,
 				bestScoreButton.getObject_y()+bestScoreButton.getObject_height()/2+guanka_bitmap.getHeight(),guanka_bitmap.getWidth(),guanka_bitmap.getHeight(),guanka_bitmap,paintSize);
 
-		target_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.drawable.announcement_bg);
+		target_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.announcement_bg);
 		target_bitmap = Utils.getBitmap(target_bitmap,(int) (screen_width*0.4f),sourceBitmapHeight);
 
 		targetScoreButton =new TitleButton(mMainView.getMainContext().getResources());
@@ -164,13 +164,13 @@ public class Guanka extends GameObject{
 		targetScoreButton.setFlashSpeed(70);
 		
 		//菜单
-		pause_bitmap =  BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.drawable.pause);
+		pause_bitmap =  BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.pause);
 		pause_bitmap = Utils.getBitmap(pause_bitmap,(int) (screen_width*0.1f),(int) (screen_width*0.1f));
 		pauseButton = new TitleButton(mMainView.getMainContext().getResources());
 		pauseButton.init(""," ",screen_width-pause_bitmap.getWidth(),targetScoreButton.getObject_y()-pause_bitmap.getHeight()-target_bitmap.getHeight()/2,pause_bitmap.getWidth(),pause_bitmap.getHeight(),pause_bitmap,paintSize);
 
 		//第三行
-		score_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.drawable.announcement_bg);
+		score_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.announcement_bg);
 		score_bitmap = Utils.getBitmap(score_bitmap,(int) (screen_width*0.5f),sourceBitmapHeight);
 
 		ScoreButton =new TitleButton(mMainView.getMainContext().getResources());
@@ -180,7 +180,7 @@ public class Guanka extends GameObject{
 		
 		final int lunckWideth = 80;
 		//金币显示
-		luck_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.drawable.lucky_star);
+		luck_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.lucky_star);
 		float currentWidth = screen_width/720*lunckWideth;
 		luck_bitmap = Utils.getBitmap(luck_bitmap,(int)currentWidth,(int)currentWidth);
 
@@ -191,7 +191,7 @@ public class Guanka extends GameObject{
 
 	
 		//第五行过关标识
-		sucess_bitmap =  BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.drawable.stage_clear);
+		sucess_bitmap =  BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.stage_clear);
 		float scal = screen_width*0.3f/sucess_bitmap.getWidth();
 		sucess_bitmap = Utils.getBitmap(sucess_bitmap,(int) (sucess_bitmap.getWidth()*scal),(int) (sucess_bitmap.getHeight()*scal));
 		
@@ -200,14 +200,14 @@ public class Guanka extends GameObject{
 		sucessButton.setButtonFlash(true);
 		sucessButton.setFlashTime(10);
 		
-		suplse_stars =  BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.drawable.un_thxgiftbagbackpic_2);
+		suplse_stars =  BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.un_thxgiftbagbackpic_2);
 		float suplse_scale = screen_width/suplse_stars.getWidth();
 		suplse_stars = Utils.getBitmap(suplse_stars,(int) (suplse_stars.getWidth()*suplse_scale),(int) (suplse_stars.getHeight()*suplse_scale));
 		suplseButton = new TitleButton(mMainView.getMainContext().getResources());
 		suplseButton.init("","",screen_width/2-suplse_stars.getWidth()/2, screen_height/2,suplse_stars.getWidth(),suplse_stars.getHeight(),suplse_stars,paintSize);
 
 		//关卡提示
-		diji_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.drawable.guanka);
+		diji_bitmap = BitmapFactory.decodeResource(mMainView.getContext().getResources(), R.mipmap.guanka);
 		dijiButton = new TitleButton(mMainView.getMainContext().getResources());
 		dijiButton.init("",""+guanka,screen_width/2, screen_height/2,diji_bitmap.getWidth(),diji_bitmap.getHeight(),diji_bitmap,paintSize);
 	}

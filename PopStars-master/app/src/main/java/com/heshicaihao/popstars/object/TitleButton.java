@@ -233,7 +233,7 @@ public class TitleButton extends GameObject {
     */
    Bitmap createFramedPhoto(int x, int y, Bitmap image, float outerRadiusRat) {
        //����Դ�ļ��½�һ��darwable����
-       Drawable imageDrawable = new BitmapDrawable(image);
+	   Drawable imagemipmap = new BitmapDrawable(image);
 
        // �½�һ���µ����ͼƬ
        Bitmap output = Bitmap.createBitmap(x, y, Bitmap.Config.ARGB_8888);
@@ -249,9 +249,9 @@ public class TitleButton extends GameObject {
 
        // ��ԴͼƬ���Ƶ����Բ�Ǿ�����
        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-       imageDrawable.setBounds(0, 0, x, y);
+       imagemipmap.setBounds(0, 0, x, y);
        canvas.saveLayer(outerRect, paint, Canvas.ALL_SAVE_FLAG);
-       imageDrawable.draw(canvas);
+       imagemipmap.draw(canvas);
        canvas.restore();
 
        return output;

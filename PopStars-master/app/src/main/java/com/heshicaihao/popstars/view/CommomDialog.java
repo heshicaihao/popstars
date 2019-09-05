@@ -50,8 +50,8 @@ public class CommomDialog extends Dialog {
 		private TextView voiceText;
 		private TextView doubleText;
 		private View contentView;
-		int voiceDrableresid = R.drawable.open_voice;
-		int singleDrableresid = R.drawable.double_click1;
+		int voiceDrableresid = R.mipmap.open_voice;
+		int singleDrableresid = R.mipmap.double_click1;
 		private OnClickListener resumeButtonClickListener;
 		private OnClickListener doubleButtonClickListener;
 		private OnClickListener voiceButtonClickListener;
@@ -81,7 +81,7 @@ public class CommomDialog extends Dialog {
 		/**
 		 * Set the Dialog message from resource
 		 * 
-		 * @param title
+		 * @param message
 		 * @return
 		 */
 		public Builder setMessage(int message) {

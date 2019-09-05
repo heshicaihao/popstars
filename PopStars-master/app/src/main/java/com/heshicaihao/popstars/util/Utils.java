@@ -31,12 +31,9 @@ package com.heshicaihao.popstars.util;
  * limitations under the License.
  */
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
@@ -58,7 +55,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -227,9 +223,9 @@ public class Utils {
 	public static Bitmap createBitmapFromView(View view) {
 
 		if (view instanceof ImageView) {
-			Drawable drawable = ((ImageView) view).getDrawable();
-			if (drawable != null && drawable instanceof BitmapDrawable) {
-				return ((BitmapDrawable) drawable).getBitmap();
+			Drawable mipmap = ((ImageView) view).getDrawable();
+			if (mipmap != null && mipmap instanceof BitmapDrawable) {
+				return ((BitmapDrawable) mipmap).getBitmap();
 			}
 		}
 

@@ -81,26 +81,26 @@ public class MainView extends BaseView {
 
 	public void initBitmap() {
 		background = BitmapFactory.decodeResource(getResources(),
-				R.drawable.background);
+				R.mipmap.background);
 
 		background = Utils.getBitmap(background, (int) screen_width,
 				(int) screen_height);
 
 		/*
-		 * city = BitmapFactory.decodeResource(getResources(), R.drawable.city);
+		 * city = BitmapFactory.decodeResource(getResources(), R.mipmap.city);
 		 * float cityScale = (float) (screen_width / city.getWidth()); city =
 		 * Utils.getBitmap(city, (int) ((int) city.getWidth() * cityScale),
 		 * (int) cityScale * city.getHeight());
 		 */
 
 		button = BitmapFactory
-				.decodeResource(getResources(), R.drawable.button);
+				.decodeResource(getResources(), R.mipmap.button);
 		button_scale = screen_width / button.getWidth() * BUTTON_WIDE_PRO;
 		button = Utils.getBitmap(button,
 				(int) ((int) button.getWidth() * button_scale),
 				(int) ((int) button.getHeight() * button_scale));
 		button2 = BitmapFactory.decodeResource(getResources(),
-				R.drawable.button2);
+				R.mipmap.button2);
 		button2 = Utils.getBitmap(button2,
 				(int) ((int) button2.getWidth() * button_scale),
 				(int) ((int) button2.getHeight() * button_scale));

@@ -228,17 +228,17 @@ public class StartView extends BaseView {
     public void initBitmap() {
         BUTTON_DIS = (int) (BUTTON_DIS * screen_width / screenWidthMeasure);
         //菜单
-        close_bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.close_voice);
+        close_bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.close_voice);
         close_bitmap = Utils.getBitmap(close_bitmap, (int) (screen_width * 0.1f), (int) (screen_width * 0.1f));
-        open_bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.open_voice);
+        open_bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.open_voice);
         open_bitmap = Utils.getBitmap(open_bitmap, (int) (screen_width * 0.1f), (int) (screen_width * 0.1f));
         VoiceButton = new TitleButton(getContext().getResources());
         VoiceButton.init("", " ", screen_width - close_bitmap.getWidth(), BUTTON_DIS / 2, close_bitmap.getWidth(), close_bitmap.getHeight(), close_bitmap, 1);
 
-        background = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.background_main);
+        background = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.background_main);
         background = Utils.getBitmap(background, (int) screen_width, (int) screen_height);
 
-        best_bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.announcement_bg);
+        best_bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.announcement_bg);
         best_bitmap = Utils.getBitmap(best_bitmap, (int) (screen_width * 0.5f), (int) (screen_width / screenWidthMeasure * sourceBitmapHeight));
 
         best_title_length = paint.measureText(context.getString(R.string.best_score));
@@ -248,18 +248,18 @@ public class StartView extends BaseView {
 
         // TODO Auto-generated method stub
         //background = BitmapFactory.decodeResource(getResources(),
-        //		R.drawable.beijing);
-        city = BitmapFactory.decodeResource(getResources(), R.drawable.bg_hiscore);
+        //		R.mipmap.beijing);
+        city = BitmapFactory.decodeResource(getResources(), R.mipmap.bg_hiscore);
         city = Utils.getBitmap(city, (int) screen_width, (int) screen_width / city.getWidth() * city.getHeight());
-        text = BitmapFactory.decodeResource(getResources(), R.drawable.popstar);
+        text = BitmapFactory.decodeResource(getResources(), R.mipmap.popstar);
         popScale = (float) (screen_width / text.getWidth()) * 0.8f;
         text = Utils.getBitmap(text, (int) ((int) text.getWidth() * popScale), (int) ((int) text.getHeight() * popScale));
         button = BitmapFactory
-                .decodeResource(getResources(), R.drawable.button);
+                .decodeResource(getResources(), R.mipmap.button);
         button_scale = screen_width / button.getWidth() * BUTTON_WIDE_PRO;
         button = Utils.getBitmap(button, (int) ((int) button.getWidth() * button_scale), (int) ((int) button.getHeight() * button_scale * 0.9f));
         button2 = BitmapFactory
-                .decodeResource(getResources(), R.drawable.button2);
+                .decodeResource(getResources(), R.mipmap.button2);
         button2 = Utils.getBitmap(button2, (int) ((int) button2.getWidth() * button_scale), (int) ((int) button2.getHeight() * button_scale * 0.9f));
 
         text_x = screen_width / 2 - text.getWidth() / 2;

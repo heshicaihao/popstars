@@ -66,9 +66,9 @@ public class Firework {
 	private int mode = 0;
 	private float srceenWidth;
 	private float screenHeight;
-	private int bitmapColor[] = { R.drawable.light_blue,
-			R.drawable.light_yellow, R.drawable.light_green,
-			R.drawable.light_pink, R.drawable.light_red };
+	private int bitmapColor[] = { R.mipmap.light_blue,
+			R.mipmap.light_yellow, R.mipmap.light_green,
+			R.mipmap.light_pink, R.mipmap.light_red };
 
 	public void setMode(int mode) {
 		this.mode = mode;

@@ -72,8 +72,8 @@ public class XingBiz {
 		random = new Random();
 		this.fireworkView = fireworkView;
 		this.paint = new Paint();
-		//goodBoy = BitmapFactory.decodeResource(resources, R.drawable.combo_awesome);
-		//superGoodBoy = BitmapFactory.decodeResource(resources, R.drawable.combo_fantastic);
+		//goodBoy = BitmapFactory.decodeResource(resources, R.mipmap.combo_awesome);
+		//superGoodBoy = BitmapFactory.decodeResource(resources, R.mipmap.combo_fantastic);
 	}
 	
 	public void setScoreMoveField(ScoreMoveField mScoreMoveField) {

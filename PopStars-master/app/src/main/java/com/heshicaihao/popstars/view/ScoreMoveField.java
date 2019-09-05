@@ -97,7 +97,7 @@ public class ScoreMoveField extends View {
 
     /**
      * 引爆view
-     * @param view 即将被引爆的view
+     * @param mmoveScoreText 即将被引爆的view
      */
 
     public void explode(moveScoreText mmoveScoreText) {
