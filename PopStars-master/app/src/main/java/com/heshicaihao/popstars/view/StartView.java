@@ -22,7 +22,6 @@ import java.util.Map;
 public class StartView extends BaseView {
 
     private LinkedList<Firework> fireworks = new LinkedList<Firework>();
-    private boolean hasAdv = false;
     private float text_x;
     private float text_y;
     private float button_x;
@@ -305,17 +304,6 @@ public class StartView extends BaseView {
         aboutGameButton.setFlashSpeed(100);
 
         paint.setTextSize(screen_width / screenWidthMeasure * textSize);
-        if (hasAdv) {
-            advBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.double_click);
-            float advBitmapScale = screen_width / screenWidthMeasure;
-            advBitmap = Utils.getBitmap(advBitmap, (int) ((int) advBitmap.getWidth() * advBitmapScale), (int) ((int) advBitmap.getHeight() * advBitmapScale));
-            advButton = new TitleButton(getContext().getResources());
-            advButton.init("", "", screen_width - advBitmap.getWidth(),
-                    screen_height / 2, advBitmap.getWidth(), advBitmap.getHeight(), advBitmap, painSize);
-            advButton.setBreath(true);
-            advBitmapText = BitmapFactory.decodeResource(getResources(), R.drawable.text_free_get2);
-            advBitmapText = Utils.getBitmap(advBitmapText, (int) ((int) advBitmapText.getWidth() * advBitmapScale), (int) ((int) advBitmapText.getHeight() * advBitmapScale));
-        }
     }
 
     // 释放图片资源的方法
@@ -399,10 +387,6 @@ public class StartView extends BaseView {
             resumeGameButton.draw(canvas);
             aboutGameButton.draw(canvas);
             VoiceButton.draw(canvas);
-            if (hasAdv) {
-                canvas.drawBitmap(advBitmapText, screen_width - advBitmapText.getWidth(), screen_height / 2 + advBitmap.getHeight() / 2, paint);
-                advButton.draw(canvas);
-            }
             for (int i = 0; i < fireworks.size(); i++) {
                 fireworks.get(i).draw(canvas);
             }
