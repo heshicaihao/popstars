@@ -15,7 +15,7 @@ android {
             keyPassword "123456"
         }
     }
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.heshicaihao.popstars"
         minSdkVersion 21

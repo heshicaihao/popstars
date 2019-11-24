@@ -25,8 +25,8 @@ public class MyConstant {
 	public static int SHOW_DIEDIALOG = 16;
 	public static int WELCOME_SOUND = 17;
 
-	public final static int MAXROW = 10;
-	public final static int MAXCLOUM = 10;
+	public final static int MAXROW = 12;
+	public final static int MAXCLOUM = 12;
 
 	public final static String BESTSCOREKEY = "bestScore";
 	public final static String GUANKAEKEY = "guanka";

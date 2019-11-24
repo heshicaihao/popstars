@@ -89,7 +89,7 @@ public class XingBiz {
 	public void setScreenWH(float screen_width, float screen_height) {
 		this.screen_width = screen_width;
 		this.screen_height = screen_height;
-		this.xwidth = (int) screen_width / 10;
+		this.xwidth = (int) screen_width / MyConstant.MAXROW;
 		this.xheight = this.xwidth;
 		
 	}
@@ -125,7 +125,7 @@ public class XingBiz {
 	}
 
 	public boolean getAllBlockInitFinash(){
-		if(hangshu >=20 && isAllStopDown() || isTouchBlock){
+		if(hangshu >=MyConstant.MAXROW*2 && isAllStopDown() || isTouchBlock){
 			return true;
 		}
 		return false;
@@ -134,12 +134,12 @@ public class XingBiz {
 	private boolean isTouchBlock = false;
 	// 初始化星星 每次初始化10个 一共十行
 	public void initObject1() {
-		if (hangshu < 20) {
+		if (hangshu < MyConstant.MAXROW*2) {
 			isTouchBlock = false;
 			if (hangshu%2==0) {
-				for (int i = 0; i <5;i++) {
+				for (int i = 0; i <MyConstant.MAXROW/2;i++) {
 					id++;
-					float x = (float) (2*i) * screen_width / 10;
+					float x = (float) (2*i) * screen_width / MyConstant.MAXROW;
 					float y = -random.nextInt(xheight / 2) - (hangshu * xheight);
 					Xing xing = new Xing(resources);
 					xing.setScreenWH(screen_width, screen_height);
@@ -148,9 +148,9 @@ public class XingBiz {
 					Mainxinglist.add(xing);
 				}
 			} else {
-				for (int i = 0; i <5;i++) {
+				for (int i = 0; i <MyConstant.MAXROW/2;i++) {
 					id++;
-					float x = (float) (2*i+1) * screen_width / 10;
+					float x = (float) (2*i+1) * screen_width / MyConstant.MAXROW;
 					float y = -random.nextInt(xheight / 2) - (hangshu * xheight);
 					Xing xing = new Xing(resources);
 					xing.setScreenWH(screen_width, screen_height);
@@ -313,7 +313,7 @@ public class XingBiz {
 	
 	public void resumeGame(){
 		this.Mainxinglist.clear();
-		hangshu = 20;
+		hangshu = MyConstant.MAXROW*2;
 		this.chuangguanwancheng = false;
 		isResetSpeed = false;
 		this.iscaozuo = false;
@@ -673,7 +673,7 @@ public class XingBiz {
 										if(brock){
 											i++;
 											defen = 0;
-											defen+=(2*i-1)*5;
+											defen+=(2*i-1)*MyConstant.MAXROW/2;
 											guanka.setDefen(guanka.getDefen()+defen);
 											obj2.setAlive(false);
 											// 爆炸该视图
